@@ -1,46 +1,89 @@
 <template>
-    <div class="auth-form">
+    <form class="auth-form" @submit.prevent="loginHandler">
         <div class="company-info">
-            <svg><use xlink:href="../assets/img/sprite.svg#logo-svg"></use></svg>
+            <svg>
+                <use xlink:href="../assets/img/sprite.svg#logo-svg"></use>
+            </svg>
             <h3>Need for drive</h3>
         </div>
+
         <div class="auth-card">
             <h3>Вход</h3>
             <h4>Почта</h4>
-            <input type="text" placeholder="Введите почту">
+            
+            <input
+                v-model="email"
+                type="text"
+                placeholder="Введите почту"
+            >
+
             <h4>Пароль</h4>
-            <input type="password" placeholder="Введите пароль">
+            
+            <input
+                v-model="password"
+                type="password"
+                placeholder="Введите пароль"
+            >
+
             <div class="button-str">
                 <h4>Запросить доступ</h4>
-                <button>Войти</button>
+                <button type="submit">Войти</button>
             </div>
         </div>
-    </div>
+    </form>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-    name: 'AuthForm'
+    name: 'AuthForm',
+
+    data() {
+        return {
+            email : '',
+            password : ''
+        }
+    },
+
+    methods: {
+        ...mapActions([ 'login' ]),
+
+        loginHandler () {
+            const { email, password } = this;
+            
+            const data = {
+                email,
+                password,
+            };
+
+            let isFull = true;
+            for (const key in data) {
+                if (!data[key]) {
+                    isFull = false;
+                    break;
+                }
+            }
+
+            if (isFull) {
+                this.login(data);
+                this.$router.push('/');
+            }
+        },
+    }
 }
 </script>
 
 <style lang="scss" scoped>
     .auth-form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        height: 100%;
-        background: #F5F6F8;
-
         .company-info {
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            height: 44.5px;
+            height: 45px;
             margin-top: 167px;
-            margin-bottom: 16.5px;
+            margin-bottom: 17px;
 
             h3 {
                 font-family: 'Helvetica';
@@ -50,21 +93,21 @@ export default {
                 line-height: 28px;
 
                 color: #3D5170;
-                height: 27.5px;
+                height: 28px;
                 margin: 0;
             }
 
             svg {
-                width: 44.5px;
-                height: 44.5px;
-                margin-right: 11.5px;
+                width: 45px;
+                height: 45px;
+                margin-right: 12px;
             }
         }
 
         .auth-card {
             display: flex;
             flex-direction: column;
-            padding: 19.5px 18px 20.5px 17px;
+            padding: 20px 18px 21px 17px;
         
             width: 341.5px;
             height: 213.5px;
@@ -76,12 +119,12 @@ export default {
             h3 {
                 text-align: center;
                 margin: 0;
-                margin-bottom: 35.5px;
+                margin-bottom: 36px;
 
                 font-family: 'Helvetica';
                 font-style: normal;
                 font-weight: 300;
-                font-size: 17.5px;
+                font-size: 18px;
                 line-height: 20px;
 
                 color: #3D5170;
@@ -91,7 +134,7 @@ export default {
                 font-family: 'Helvetica';
                 font-style: normal;
                 font-weight: 400;
-                font-size: 10.5px;
+                font-size: 11px;
                 line-height: 12px;
                 margin: 0;
                 margin-bottom: 8.5px;
@@ -101,12 +144,12 @@ export default {
 
             input {
                 height: 29px;
-                border: 0.5px solid #BECAD6;
+                border: 1px solid #BECAD6;
                 box-sizing: border-box;
                 border-radius: 3px;
                 margin-bottom: 15px;
 
-                padding: 8px 11.5px 8.5px 11.5px;
+                padding: 8px 12px 9px 12px;
 
                 font-family: 'Helvetica';
                 font-style: normal;
@@ -141,7 +184,7 @@ export default {
                     font-family: 'Helvetica';
                     font-style: normal;
                     font-weight: 400;
-                    font-size: 11.5px;
+                    font-size: 12px;
                     line-height: 13px;
                     color: white;
                 }

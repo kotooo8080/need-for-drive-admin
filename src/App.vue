@@ -1,15 +1,10 @@
 <template>
-    <admin-page />
+    <router-view />
 </template>
 
 <script>
-import AdminPage from './pages/AdminPage.vue'
 
 export default {
     name: 'App',
-
-    components: {
-        AdminPage
-    }
 }
 </script>

@@ -1,9 +1,6 @@
 <template>
     <div class="admin-page">
-        <auth-form
-            v-if="display"
-        />
-        <div v-else class="admin-panel-info">
+        <div class="admin-panel-info">
             <admin-header />
             <div class="admin-page-info">
                 <menu-block @tabClick="tabClick"/>
@@ -14,23 +11,14 @@
 </template>
 
 <script>
-import AuthForm from '@/components/AuthForm.vue'
 import AdminHeader from '@/components/AdminHeader.vue'
 import MenuBlock from '@/components/MenuBlock.vue'
 import OrderList from '@/components/OrderList.vue'
 
 export default {
     name: 'AdminPage',
-
-    data() {
-        return {
-            display: false,
-            selectedComponent: 'AutoCard'
-        }
-    },
-
+    
     components: {
-        AuthForm,
         AdminHeader,
         MenuBlock,
         OrderList
@@ -50,7 +38,7 @@ export default {
             .admin-page-info {
                 display: flex;
                 flex-direction: row;
-                height: calc(100% - 67.5px);
+                height: calc(100% - 68px);
             }
         }
     }

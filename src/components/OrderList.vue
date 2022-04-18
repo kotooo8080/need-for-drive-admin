@@ -258,7 +258,8 @@ export default {
 
                 img {
                     width: 138px;
-                    height: 63px;
+                    height: fit-content;
+                    //height: 63px;
 
                     margin-top: 13.5px;
                     margin-left: 21px;

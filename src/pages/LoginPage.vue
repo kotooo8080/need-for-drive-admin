@@ -1,11 +1,11 @@
 <template>
-  <div class="login-page">
-    <auth-form />
-  </div>
+    <div class="login-page">
+        <auth-form />
+    </div>
 </template>
 
 <script>
-import AuthForm from '@/components/AuthForm.vue'
+import AuthForm from '@/components/auth/AuthForm.vue'
 
 export default {
     name: 'LoginPage',
@@ -17,12 +17,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.login-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @import '/src/assets/style/colors.scss';
 
-    height: 100%;
-    background: #F5F6F8;
-}
+    .login-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        height: 100%;
+        background: $content-background-white;
+    }
 </style>

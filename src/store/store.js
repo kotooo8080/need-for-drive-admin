@@ -18,7 +18,6 @@ const store = createStore({
         },
 
         logout ({ commit }) {
-            console.log('logout');
             window.localStorage.setItem('auth', false);
             commit('setUserData', {});
         },

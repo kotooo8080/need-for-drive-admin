@@ -2,20 +2,36 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import { logIn } from '../middleware/auth'
 
-import AdminPage from '../pages/AdminPage.vue'
+import OrderListPage from '../pages/OrderListPage.vue'
+import CarListPage from '../pages/CarListPage.vue'
 import LoginPage from '../pages/LoginPage.vue'
 
 const routes = [
     {
         path: '/',
-        name: 'AdminPage',
-        component: AdminPage,
-        meta: { requiresAuth: true },
+        name: 'OrderListPage',
+        component: OrderListPage,
+        meta: {
+            requiresAuth: true,
+            layout: 'AdminLayout',
+        },
+    },
+    {
+        path: '/cars',
+        name: 'CarListPage',
+        component: CarListPage,
+        meta: {
+            requiresAuth: true,
+            layout: 'AdminLayout',
+        },
     },
     {
         path: '/login',
         name: 'LoginPage',
         component: LoginPage,
+        meta: {
+            layout: 'AuthLayout',
+        },
     },
 ]
 
@@ -28,7 +44,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {        
         if (!logIn()) {
-            next({ path: '/login' })
+            next({ name: 'LoginPage' })
         } else {
             next()
         }
@@ -37,4 +53,4 @@ router.beforeEach((to, from, next) => {
     }
 })
 
-export default router;
+export default router

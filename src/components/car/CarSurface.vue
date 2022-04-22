@@ -1,63 +1,24 @@
 <template>
     <div class="car-surface">
-        <h2 class="car-surface__description">Список авто</h2>
-        <div class="car-surface__data">
-            <table class="car-surface__table">
-                <caption style="display: none;">Список авто</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Марка</th>
-                        <th scope="col">Модель</th>
-                        <th scope="col">Цвет</th>
-                        <th scope="col">Номер</th>
-                        <th scope="col">Категория</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr 
-                        v-for="(car, indx) in cars" 
-                        :key="indx" 
-                        @click="itemClicked(car)"
-                    >
-                        <td>{{ car.brand }}</td>
-                        <td>{{ car.model }}</td>
-                        <td>{{ car.color }}</td>
-                        <td>{{ car.number }}</td>
-                        <td>{{ car.category }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <car-surface-header />
+        <car-surface-list/>
+        <car-surface-footer/>
     </div>
 </template>
 
 <script>
+import CarSurfaceFooter from './components/CarSurfaceFooter.vue';
+import CarSurfaceHeader from './components/CarSurfaceHeader.vue'
+import CarSurfaceList from './components/CarSurfaceList.vue';
+
 export default {
     name: 'CarSurface',
 
-    data() {
-        return {
-            clickedCar: 0,
-            cars: [
-                { brand: 'Opel', model: 'Astra', color: 'голубая', number: '1еее11', category: 'Эконом' },
-                { brand: 'Skoda', model: 'Fabia', color: 'красная', number: '2еап15', category: 'Эконом+' },
-                { brand: 'Skoda', model: 'Octavia', color: 'белая', number: '2еае75', category: 'Комфорт' },
-                { brand: 'Opel', model: 'Astra', color: 'голубая', number: '1еее11', category: 'Эконом' },
-                { brand: 'Skoda', model: 'Fabia', color: 'красная', number: '2еап15', category: 'Эконом+' },
-                { brand: 'Skoda', model: 'Octavia', color: 'белая', number: '2еае75', category: 'Комфорт' },
-                { brand: 'Opel', model: 'Astra', color: 'голубая', number: '1еее11', category: 'Эконом' },
-                { brand: 'Skoda', model: 'Fabia', color: 'красная', number: '2еап15', category: 'Эконом+' },
-                { brand: 'Skoda', model: 'Octavia', color: 'белая', number: '2еае75', category: 'Комфорт' },
-            ]
-        }
+    components: {
+        CarSurfaceHeader,
+        CarSurfaceFooter,
+        CarSurfaceList
     },
-
-    methods: {
-        itemClicked (clickedRow) {
-            this.clickedCar = clickedRow.index;
-        }
-    }
-
 }
 </script>
 
@@ -65,19 +26,18 @@ export default {
     @import '/src/assets/style/colors.scss';
 
     .car-surface {
-        background: $light-gray;
-        width: 80%;
-        position: relative;
+        width: calc(100% - 57px);
+        background: $main-white;
+        margin-left: 31.5px;
 
-        &__description {
-            font-family: 'Helvetica';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 29px;
-            line-height: 33px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
 
-            margin-left: 31.5px;
-            color: $blue-gray;
+        @media ( max-width: 767px ) {
+            margin-left: 24px;
+            width: calc(100% - 48px);
         }
 
         &__data {

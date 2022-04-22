@@ -1,12 +1,10 @@
 <template>
-    <div class="order-surface-filters">
-        <select 
-            class="order-surface-filters__select"
+    <div class="car-surface-filters">
+        <select class="car-surface-filters__select"
             v-for="dataArr in allArrNames"
             :key="dataArr.id"
         >
             <option
-                class="order-surface-filters__option"
                 v-for="arrElem in this[dataArr.name]"
                 :key="arrElem.id"
             >{{ arrElem.name }}</option>
@@ -16,40 +14,34 @@
 
 <script>
 export default {
-    name: 'OrderSurfaceFilters',
+    name: 'CarSurfaceFilters',
 
     data() {
         return {
             allArrNames: [
-                { id: 'arrF1', name: 'periods' },
-                { id: 'arrF2', name: 'models' },
-                { id: 'arrF3', name: 'cities' },
-                { id: 'arrF4', name: 'states' }
+                { id: 'arr1', name: 'brands' },
+                { id: 'arr2', name: 'colors' },
+                { id: 'arr3', name: 'categories' }
             ],
 
-            periods: [
-                { id: 'p1', name: 'За неделю' },
-                { id: 'p2', name: 'За месяц' },
-                { id: 'p3', name: 'За год' }
+            brands: [
+                { id: 'b1', name: 'KIA' },
+                { id: 'b2', name: 'Skoda' },
+                { id: 'b3', name: 'Hyndai' }
             ],
 
-            models: [
-                { id: 'm1', name: 'Elantra' },
-                { id: 'm2', name: 'Mazda 6' },
-                { id: 'm3', name: 'Porsche 911' }
+            colors: [
+                { id: 'c1', name: 'Белый' },
+                { id: 'c2', name: 'Синий' },
+                { id: 'c3', name: 'Красный' },
+                { id: 'c4', name: 'Черный' }
             ],
 
-            cities: [
-                { id: 's1', name: 'Ульяновск' },
-                { id: 's2', name: 'Санкт-Петербург' },
-                { id: 's3', name: 'Краснодар' },
-                { id: 's4', name: 'Уфа' }
-            ],
-
-            states: [
-                { id: 'st1', name: 'В процессе' },
-                { id: 'st2', name: 'Завершен' },
-                { id: 'st3', name: 'Не начат' }
+            categories: [
+                { id: 'cat1', name: 'Эконом' },
+                { id: 'cat2', name: 'Эконом+' },
+                { id: 'cat3', name: 'Бизнес' },
+                { id: 'cat4', name: 'Спорт' },
             ],
         }
     }
@@ -59,7 +51,7 @@ export default {
 <style lang="scss" scoped>
     @import './src/assets/style/colors.scss';
 
-    .order-surface-filters {
+    .car-surface-filters {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -76,7 +68,7 @@ export default {
         &__select {
             width: 110.5px;
             height: 29px;
-    
+
             margin-right: 15px;
             padding-left: 14px;
 

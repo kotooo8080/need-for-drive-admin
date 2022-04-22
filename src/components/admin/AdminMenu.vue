@@ -19,31 +19,22 @@
         </div>
 
         <div class="admin-menu__items">
-            <ul class="admin-menu__items-list">
-                <span class="admin-menu__item admin-menu__active-item admin-menu__first-item">
-                    <svg class="admin-menu__item-svg admin-menu__first-item-svg"><use xlink:href="@/assets/img/sprite.svg#edit-card-svg"></use></svg>
-                    <li class="admin-menu__item-li">Карточка автомобиля</li>
-                </span>
-                <span class="admin-menu__item admin-menu__second-item">
-                    <svg class="admin-menu__item-svg admin-menu__second-item-svg"><use xlink:href="@/assets/img/sprite.svg#auto-list-svg"></use></svg>
-                    <li class="admin-menu__item-li">Список авто</li>
-                </span>
-                <span class="admin-menu__item">
-                    <svg class="admin-menu__item-svg"><use xlink:href="@/assets/img/sprite.svg#order-list-svg"></use></svg>
-                    <li class="admin-menu__item-li">Заказы</li>
-                </span>
-            </ul>
+            <admin-menu-items @menuClick="menuItemClick"/>
         </div>
     </div>
 </template>
 
 <script>
+import AdminMenuItems from '../AdminMenuItems.vue';
+
 export default {
     name: 'AdminMenu',
 
+    components: { AdminMenuItems },
+
     data() {
         return {
-            menuSwitcher: false
+            menuSwitcher: false,
         }
     },
 
@@ -51,6 +42,11 @@ export default {
         toggleVisibilitySwitcher() {
             this.menuSwitcher = !this.menuSwitcher;
         },
+
+        menuItemClick(item) {
+            this.$emit('menuClick', Number(item));
+            this.activeItem = Number(item);
+        }
     }
 }
 </script>
@@ -181,84 +177,6 @@ export default {
         &__items {
             @media ( max-width: 767px ) {
                 display: none;
-            }
-        }
-
-        &__items-list {
-            display: flex;
-            flex-direction: column;
-
-            margin: 0;
-            padding: 0;
-        }
-
-        &__item {
-            @media ( max-width: 1024px ) {
-                height: 62px;
-            }
-
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-
-            height: 57.7px;
-            border-bottom: 1px solid $light-gray;
-
-            font-family: 'Helvetica';
-            font-style: normal;
-            font-weight: 300;
-            font-size: 15px;
-            line-height: 17px;
-
-            color: $blue-gray;
-        }
-
-        &__item-svg {
-            width: 12px;
-            height: 12px;
-
-            margin-left: 26px;
-            margin-right: 11px;
-        }
-
-        &__item-li {
-            list-style-type: none;
-            width: 80%;
-            height: 17px;
-
-            margin-right: 26px;
-        }
-
-        &__active-item {
-            color: $admin-blue;
-            background-color: $gray-white;
-        }
-
-        &__first-item {
-            @media ( max-width: 1024px ) {
-                align-items: flex-start;
-                height: 46px;
-                margin-top: 16px;
-            }
-        }
-
-        &__first-item-svg {
-            @media ( max-width: 1024px ) {
-                margin-top: 10px;
-            }
-        }
-
-        &__second-item {
-            @media ( max-width: 809px ) {
-                align-items: flex-start;
-                height: 46px;
-                margin-top: 16px;
-            }
-        }
-
-        &__second-item-svg {
-            @media ( max-width: 809px ) {
-                margin-top: 10px;
             }
         }
     }

@@ -1,10 +1,10 @@
 <template>
     <main class="admin-layout">
-        <admin-menu class="admin-layout__menu" />
+        <admin-menu class="admin-layout__menu" @menuClick="pathChange"/>
         <div class="admin-layout__main">
             <admin-header class="admin-layout__header" />
             <div class="admin-layout__content">
-                <h2 class="admin-layout__content-name">Заказы</h2>
+                <content-description :contentIndex="contentIndex"/>
                 <slot></slot>
             </div>
             <admin-footer class="admin-layout__footer" />
@@ -16,6 +16,7 @@
 import AdminMenu from '@/components/admin/AdminMenu'
 import AdminHeader from '@/components/admin/AdminHeader'
 import AdminFooter from '@/components/admin/AdminFooter'
+import ContentDescription from '@/components/ContentDescription.vue'
 
 export default {
     name: 'AdminLayout',
@@ -24,7 +25,29 @@ export default {
         AdminMenu,
         AdminHeader,
         AdminFooter,
+        ContentDescription
     },
+
+    data() {
+        return {
+            contentIndex: 2
+        }
+    },
+
+    methods: {
+        pathChange(componentIndx) {
+            this.contentIndex = componentIndx;
+            if(componentIndx == 0) {
+                this.$router.push('/');
+            }
+            if(componentIndx == 1) {
+                this.$router.push('/car');
+            }
+            if(componentIndx == 2) {
+                this.$router.push('/');
+            }
+        }
+    }
 }
 </script>
 
@@ -62,26 +85,6 @@ export default {
             flex-grow: 1;
             background: $content-background-white;
             width: 100%;
-        }
-
-        &__content-name {
-            font-family: 'Helvetica';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 29px;
-            line-height: 33px;
-
-            margin-left: 31.5px;
-            color: $blue-gray;
-
-            @media ( max-width: 1024px ) {
-                font-size: 24px;
-                line-height: 24px;
-            }
-
-            @media ( max-width: 767px ) {
-                margin-left: 24px;
-            }
         }
     }
 </style>

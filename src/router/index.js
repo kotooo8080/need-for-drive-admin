@@ -17,7 +17,7 @@ const routes = [
         },
     },
     {
-        path: '/cars',
+        path: '/car',
         name: 'CarListPage',
         component: CarListPage,
         meta: {

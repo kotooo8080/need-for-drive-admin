@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkneed_for_drive_admin"]=self["webpackChunkneed_for_drive_admin"]||[]).push([[974],{2974:function(e,n,a){a.r(n),a.d(n,{default:function(){return i}});var t=a(3396);const r={class:"auth-layout"};function u(e,n,a,u,d,o){return(0,t.wg)(),(0,t.iD)("div",r,[(0,t.WI)(e.$slots,"default",{},void 0,!0)])}var d={name:"AuthLayout"},o=a(89);const s=(0,o.Z)(d,[["render",u],["__scopeId","data-v-450826fa"]]);var i=s}}]);
+//# sourceMappingURL=974.25bc2455.js.map

@@ -51,6 +51,7 @@ export default {
         flex-direction: column;
 
         width: 30%;
+        height: fit-content;
         margin-right: 28px;
 
         background: $main-white;

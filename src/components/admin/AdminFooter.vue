@@ -30,6 +30,7 @@ export default {
 
         width: calc(100% - 54px);
         height: 69px;
+        min-height: 69px;
         padding: 0 27px;
 
         background: $main-white;

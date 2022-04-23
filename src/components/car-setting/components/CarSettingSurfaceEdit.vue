@@ -38,6 +38,13 @@
                 </label>
             </div>
         </div>
+        <div class="car-setting-surface-edit__button-block">
+            <div class="car-setting-surface-edit__first-buttons">
+                <button class="car-setting-surface-edit__button">Сохранить</button>
+                <button class="car-setting-surface-edit__button car-setting-surface-edit__button--gray">Отменить</button>
+            </div>
+            <button class="car-setting-surface-edit__button car-setting-surface-edit__button--red">Удалить</button>
+        </div>
     </div>
 </template>
 
@@ -83,6 +90,7 @@ export default {
         display: flex;
         flex-direction: column;
         width: calc(70% - 28px);
+        height: 700px;
 
         background: $main-white;
         border-radius: 9px;
@@ -90,6 +98,7 @@ export default {
 
         @media ( max-width: 834px ) {
             width: calc(55% - 28px);
+            height: fit-content;
         }
 
         @media ( max-width: 767px ) {
@@ -189,5 +198,55 @@ export default {
             margin-right: 10px;
         }
 
+        &__button-block {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            margin-top: auto;
+            margin-bottom: 0;
+
+            justify-content: space-between;
+
+            @media ( max-width: 834px ) {
+                margin-top: 31px;
+            }
+        }
+
+        &__first-buttons {
+            width: 232px;
+
+            @media ( max-width: 834px ) {
+                margin-bottom: 8px;
+            }
+        }
+
+        &__button {
+            width: 110px;
+            height: 29px;
+
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 11.5px;
+            line-height: 13px;
+
+            border: none;
+            border-radius: 4px;
+
+            color: $main-white;
+            background: $admin-blue;
+
+            &--gray {
+                margin-left: 12px;
+
+                color: $blue-gray;
+                background: $light-gray;
+            }
+
+            &--red {
+                background: $main-red;
+            }
+        }
     }
 </style>

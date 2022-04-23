@@ -27,7 +27,12 @@ export default {
         flex-direction: row;
 
         width: calc(100% - 63px);
+        margin-bottom: 150px;
         padding: 0 31.5px;
+
+        @media ( max-width: 1023px ) {
+            margin-bottom: 30px;
+        }
 
         @media ( max-width: 767px ) {
             flex-direction: column;

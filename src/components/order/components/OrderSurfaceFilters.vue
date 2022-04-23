@@ -73,6 +73,10 @@ export default {
             height: fit-content;
         }
 
+        @media ( max-width: 320px ) {
+            justify-content: center;
+        }
+
         &__select {
             width: 110.5px;
             height: 29px;
@@ -94,6 +98,10 @@ export default {
 
             @media ( max-width: 767px ) {
                 margin-bottom: 8px;
+            }
+
+            @media ( max-width: 320px ) {
+                margin-right: 3px;
             }
         }
     }

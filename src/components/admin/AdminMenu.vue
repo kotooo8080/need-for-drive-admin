@@ -18,8 +18,11 @@
             </div>
         </div>
 
-        <div class="admin-menu__items">
-            <admin-menu-items @menuClick="menuItemClick"/>
+        <div 
+            class="admin-menu__items"
+            :class="{ 'admin-menu__items--mobile-open': menuSwitcher }"
+        >
+            <admin-menu-items :menuSwitcher="menuSwitcher" @menuClick="menuItemClick"/>
         </div>
     </div>
 </template>
@@ -177,6 +180,17 @@ export default {
         &__items {
             @media ( max-width: 767px ) {
                 display: none;
+            }
+
+            &--mobile-open {
+                position: absolute;
+                width: 100vw;
+                height: 189px;
+                top: 69px;
+
+                display: flex;
+
+                background: $main-white;
             }
         }
     }

@@ -9,6 +9,10 @@ import LoginPage from '../pages/LoginPage.vue'
 const routes = [
     {
         path: '/',
+        redirect: '/need-for-drive-admin/'
+    },
+    {
+        path: '/need-for-drive-admin/',
         name: 'OrderListPage',
         component: OrderListPage,
         meta: {
@@ -18,6 +22,10 @@ const routes = [
     },
     {
         path: '/car',
+        redirect: '/need-for-drive-admin/car'
+    },
+    {
+        path: '/need-for-drive-admin/car',
         name: 'CarListPage',
         component: CarListPage,
         meta: {
@@ -27,6 +35,10 @@ const routes = [
     },
     {
         path: '/login',
+        redirect: '/need-for-drive-admin/login'
+    },
+    {
+        path: '/need-for-drive-admin/login',
         name: 'LoginPage',
         component: LoginPage,
         meta: {

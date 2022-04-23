@@ -52,6 +52,11 @@ export default {
                 margin-bottom: 16px;
                 margin-right: auto;
             }
+
+            @media ( max-width: 320px ) {
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     }
 </style>

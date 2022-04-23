@@ -21,15 +21,14 @@ export default {
     @import '/src/assets/style/colors.scss';
 
     .admin-footer {
-        position: absolute;
-        bottom: 0;
-
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
 
-        width: calc(80% - 54px);
+        margin-top: auto;
+
+        width: calc(100% - 54px);
         height: 69px;
         padding: 0 27px;
 

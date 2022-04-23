@@ -124,7 +124,7 @@ export default {
 
         &__car-img {
             width: 138px;
-            height: fit-content;
+            height: 68px;
 
             margin-top: 13.5px;
             margin-left: 21px;
@@ -136,7 +136,12 @@ export default {
             }
 
             @media ( max-width: 767px ) {
-                width: calc(40% - 37px);
+                width: calc(100% - 37px);
+                height: auto;
+            }
+
+            @media ( max-width: 320px ) {
+                width: calc(100% - 37px);
             }
         }
 
@@ -153,6 +158,10 @@ export default {
                 width: calc(60% - 10px);
                 margin-right: 10px;
                 flex-wrap: wrap;
+            }
+
+            @media ( max-width: 320px ) {
+                width: 100%;
             }
         }
 
@@ -236,6 +245,11 @@ export default {
                 width: calc(60% - 32px);
                 margin-top: 24px;
                 padding-left: 32px;
+            }
+
+            @media ( max-width: 320px ) {
+                width: 100%;
+                padding-left: 0;
             }
         }
 
@@ -334,6 +348,10 @@ export default {
             @media ( max-width: 767px ) {
                 margin-top: 32px;
                 margin-right: 10px;
+            }
+
+            @media ( max-width: 320px ) {
+                margin: 0;
             }
         }
 

@@ -37,6 +37,7 @@ export default {
 
         @media ( max-width: 767px ) {
             margin-left: 24px;
+            margin-bottom: 48px;
             width: calc(100% - 48px);
         }
     }

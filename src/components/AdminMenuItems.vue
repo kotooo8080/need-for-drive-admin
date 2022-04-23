@@ -1,15 +1,18 @@
 <template>
-    <ul class="admin-menu-items">
+    <ul 
+        class="admin-menu-items"
+        :class="{ 'admin-menu-items--mobile-open': menuSwitcher }"
+    >
         <li
             class="admin-menu-items__item"
-            :class="{ 'admin-menu-items__item--active': activeItem == indx, 'admin-menu-items__item--first-item': indx === 0, 'admin-menu-items__item--second-item': indx === 1 }"
+            :class="{ 'admin-menu-items__item--mobile-open': menuSwitcher, 'admin-menu-items__item--active': activeItem == indx, 'admin-menu-items__item--first-item': indx === 0, 'admin-menu-items__item--second-item': indx === 1 }"
             v-for="(item, indx) in menuItems"
             :key=item.id
             @click="menuItemClick(indx)"
         >
             <svg 
                 class="admin-menu-items__item-svg"
-                :class="{ 'admin-menu-items__item--first-item-svg': indx === 0, 'admin-menu-items__item--second-item-svg': indx === 1, 'admin-menu-items__item-svg--active': activeItem == indx }"
+                :class="{ 'admin-menu-items__item--mobile-open-svg': menuSwitcher, 'admin-menu-items__item--first-item-svg': indx === 0, 'admin-menu-items__item--second-item-svg': indx === 1, 'admin-menu-items__item-svg--active': activeItem == indx }"
             >
                 <use :xlink:href="require('@/assets/img/sprite.svg') + item.svgLink"></use>
             </svg>
@@ -21,6 +24,10 @@
 <script>
 export default {
     name: 'AdminMenuItems',
+
+    props: {
+        menuSwitcher: Boolean
+    },
 
     data() {
         return {
@@ -51,6 +58,12 @@ export default {
 
         margin: 0;
         padding: 0;
+
+        &--mobile-open {
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+        }
 
         &__item {
             @media ( max-width: 1024px ) {
@@ -102,6 +115,16 @@ export default {
             &--second-item-svg {
                 @media ( max-width: 809px ) {
                     margin-top: 10px;
+                }
+            }
+
+            &--mobile-open {
+                width: 100%;
+            }
+
+            &--mobile-open-svg {
+                @media ( max-width: 767px ) {
+                    margin-top: 2px;
                 }
             }
         }

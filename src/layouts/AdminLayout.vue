@@ -62,7 +62,11 @@ export default {
         position: relative;
 
         @media ( max-width: 375px ) {
-            height: 140vh;
+            height: 150%;
+        }
+
+        @media ( max-width: 320px ) {
+            height: 160%;
         }
         
         &__main {

@@ -4,6 +4,7 @@ import { logIn } from '../middleware/auth'
 
 import OrderListPage from '../pages/OrderListPage.vue'
 import CarListPage from '../pages/CarListPage.vue'
+import CarSettingPage from '../pages/CarSettingPage.vue'
 import LoginPage from '../pages/LoginPage.vue'
 
 const routes = [
@@ -28,6 +29,19 @@ const routes = [
         path: '/need-for-drive-admin/car',
         name: 'CarListPage',
         component: CarListPage,
+        meta: {
+            requiresAuth: true,
+            layout: 'AdminLayout',
+        },
+    },
+    {
+        path: '/car-setting',
+        redirect: '/need-for-drive-admin/car-setting'
+    },
+    {
+        path: '/need-for-drive-admin/car-setting',
+        name: 'CarSettingPage',
+        component: CarSettingPage,
         meta: {
             requiresAuth: true,
             layout: 'AdminLayout',

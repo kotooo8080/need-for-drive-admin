@@ -38,7 +38,7 @@ export default {
         pathChange(componentIndx) {
             this.contentIndex = componentIndx;
             if(componentIndx == 0) {
-                this.$router.push('/');
+                this.$router.push('/car-setting');
             }
             if(componentIndx == 1) {
                 this.$router.push('/car');

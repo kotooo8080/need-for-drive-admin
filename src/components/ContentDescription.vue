@@ -1,5 +1,8 @@
 <template>
-    <div class="content-description">
+    <div 
+        v-if="$route.path !== '/need-for-drive-admin/error'"
+        class="content-description"
+    >
         <h2 class="content-description__content-name">{{ contentNamesArr[contentIndex] }}</h2>
     </div>
 </template>
@@ -20,7 +23,7 @@ export default {
                 'Заказы',
             ]
         }
-    }
+    },
 }
 </script>
 

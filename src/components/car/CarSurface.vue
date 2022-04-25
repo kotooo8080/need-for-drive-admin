@@ -29,6 +29,7 @@ export default {
         width: calc(100% - 57px);
         background: $main-white;
         margin-left: 31.5px;
+        margin-bottom: 100px;
 
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;

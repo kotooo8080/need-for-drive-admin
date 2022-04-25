@@ -66,7 +66,7 @@ export default {
         width: 20%;
         height: 100%;
 
-        box-shadow: 0px 2.5px 9.5px rgba(90, 97, 105, 0.12);
+        box-shadow: 3px 0 5px -2px rgba(90, 97, 105, 0.12);
         z-index: 2;
 
         @media ( max-width: 767px ) {
@@ -89,7 +89,7 @@ export default {
             z-index: 2;
 
             @media ( max-width: 767px ) {
-                width: 15%;
+                width: 100%;
             }
         }
 

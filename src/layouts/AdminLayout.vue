@@ -90,5 +90,11 @@ export default {
             background: $content-background-white;
             width: 100%;
         }
+
+        &__menu {
+            @media ( max-width: 767px ) {
+                width: 15%;
+            }
+        }
     }
 </style>

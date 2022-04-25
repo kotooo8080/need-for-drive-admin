@@ -85,38 +85,33 @@ export default {
 
             color: $blue-gray;
 
-            &--active {
-                color: $admin-blue;
-                background-color: $gray-white;
-            }
+            // &--first-item {
+            //     @media ( max-width: 1024px ) {
+            //         //align-items: flex-start;
+            //         //height: 46px;
+            //         //margin-top: 16px;
+            //     }
+            // }
 
-            &--first-item {
-                @media ( max-width: 1024px ) {
-                    align-items: flex-start;
-                    height: 46px;
-                    margin-top: 16px;
-                }
-            }
+            // &--first-item-svg {
+            //     @media ( max-width: 1024px ) {
+            //         //margin-top: 10px;
+            //     }
+            // }
 
-            &--first-item-svg {
-                @media ( max-width: 1024px ) {
-                    margin-top: 10px;
-                }
-            }
+            // &--second-item {
+            //     @media ( max-width: 809px ) {
+            //         //align-items: flex-start;
+            //         //height: 46px;
+            //         //margin-top: 16px;
+            //     }
+            // }
 
-            &--second-item {
-                @media ( max-width: 809px ) {
-                    align-items: flex-start;
-                    height: 46px;
-                    margin-top: 16px;
-                }
-            }
-
-            &--second-item-svg {
-                @media ( max-width: 809px ) {
-                    margin-top: 10px;
-                }
-            }
+            // &--second-item-svg {
+            //     @media ( max-width: 809px ) {
+            //         //margin-top: 10px;
+            //     }
+            // }
 
             &--mobile-open {
                 width: 100%;
@@ -125,6 +120,17 @@ export default {
             &--mobile-open-svg {
                 @media ( max-width: 767px ) {
                     margin-top: 2px;
+                }
+            }
+
+            &--active {
+                color: $admin-blue;
+                background-color: $gray-white;
+
+                border-left: 4px solid $admin-blue;
+
+                @media ( max-width: 767px ) {
+                    width: calc(100% - 4px);
                 }
             }
         }
@@ -140,6 +146,8 @@ export default {
 
             &--active {
                 fill: $admin-blue;
+
+                margin-left: 22px;
             }
         }
 

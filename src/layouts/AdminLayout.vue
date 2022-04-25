@@ -38,13 +38,13 @@ export default {
         pathChange(componentIndx) {
             this.contentIndex = componentIndx;
             if(componentIndx == 0) {
-                this.$router.push('/car-setting');
+                this.$router.push('/admin/car-setting');
             }
             if(componentIndx == 1) {
-                this.$router.push('/car');
+                this.$router.push('/admin/car');
             }
             if(componentIndx == 2) {
-                this.$router.push('/');
+                this.$router.push('/admin/order');
             }
         }
     }

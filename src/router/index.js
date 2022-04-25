@@ -9,12 +9,12 @@ import ErrorPage from '../pages/ErrorPage.vue'
 import LoginPage from '../pages/LoginPage.vue'
 
 const routes = [
+    // {
+    //     path: '/',
+    //     redirect: '/need-for-drive-admin/'
+    // },
     {
-        path: '/',
-        redirect: '/need-for-drive-admin/'
-    },
-    {
-        path: '/need-for-drive-admin/',
+        path: '/admin/order',
         name: 'OrderListPage',
         component: OrderListPage,
         meta: {
@@ -22,12 +22,12 @@ const routes = [
             layout: 'AdminLayout',
         },
     },
+    // {
+    //     path: '/car',
+    //     redirect: '/need-for-drive-admin/car'
+    // },
     {
-        path: '/car',
-        redirect: '/need-for-drive-admin/car'
-    },
-    {
-        path: '/need-for-drive-admin/car',
+        path: '/admin/car',
         name: 'CarListPage',
         component: CarListPage,
         meta: {
@@ -35,12 +35,12 @@ const routes = [
             layout: 'AdminLayout',
         },
     },
+    // {
+    //     path: '/car-setting',
+    //     redirect: '/need-for-drive-admin/car-setting'
+    // },
     {
-        path: '/car-setting',
-        redirect: '/need-for-drive-admin/car-setting'
-    },
-    {
-        path: '/need-for-drive-admin/car-setting',
+        path: '/admin/car-setting',
         name: 'CarSettingPage',
         component: CarSettingPage,
         meta: {
@@ -48,12 +48,12 @@ const routes = [
             layout: 'AdminLayout',
         },
     },
+    // {
+    //     path: '/error',
+    //     redirect: '/need-for-drive-admin/error'
+    // },
     {
-        path: '/error',
-        redirect: '/need-for-drive-admin/error'
-    },
-    {
-        path: '/need-for-drive-admin/error',
+        path: '/admin/error',
         name: 'ErrorPage',
         component: ErrorPage,
         meta: {
@@ -61,12 +61,12 @@ const routes = [
             layout: 'AdminLayout',
         },
     },
+    // {
+    //     path: '/login',
+    //     redirect: '/need-for-drive-admin/login'
+    // },
     {
         path: '/login',
-        redirect: '/need-for-drive-admin/login'
-    },
-    {
-        path: '/need-for-drive-admin/login',
         name: 'LoginPage',
         component: LoginPage,
         meta: {
@@ -76,7 +76,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('#'),
     routes,
 })
 

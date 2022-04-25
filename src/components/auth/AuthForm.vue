@@ -70,7 +70,7 @@ export default {
 
             if (isFull) {
                 this.login(data);
-                this.$router.push('/');
+                this.$router.push('/admin/order');
             }
         },
     }

@@ -9,10 +9,6 @@ import ErrorPage from '../pages/ErrorPage.vue'
 import LoginPage from '../pages/LoginPage.vue'
 
 const routes = [
-    // {
-    //     path: '/',
-    //     redirect: '/need-for-drive-admin/'
-    // },
     {
         path: '/admin/order',
         name: 'OrderListPage',
@@ -22,10 +18,6 @@ const routes = [
             layout: 'AdminLayout',
         },
     },
-    // {
-    //     path: '/car',
-    //     redirect: '/need-for-drive-admin/car'
-    // },
     {
         path: '/admin/car',
         name: 'CarListPage',
@@ -35,10 +27,6 @@ const routes = [
             layout: 'AdminLayout',
         },
     },
-    // {
-    //     path: '/car-setting',
-    //     redirect: '/need-for-drive-admin/car-setting'
-    // },
     {
         path: '/admin/car-setting',
         name: 'CarSettingPage',
@@ -48,10 +36,6 @@ const routes = [
             layout: 'AdminLayout',
         },
     },
-    // {
-    //     path: '/error',
-    //     redirect: '/need-for-drive-admin/error'
-    // },
     {
         path: '/admin/error',
         name: 'ErrorPage',
@@ -61,10 +45,6 @@ const routes = [
             layout: 'AdminLayout',
         },
     },
-    // {
-    //     path: '/login',
-    //     redirect: '/need-for-drive-admin/login'
-    // },
     {
         path: '/login',
         name: 'LoginPage',

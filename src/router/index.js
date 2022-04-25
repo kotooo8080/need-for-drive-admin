@@ -53,6 +53,10 @@ const routes = [
             layout: 'AuthLayout',
         },
     },
+    {
+        path: '/:catchAll(.*)',
+        redirect: { name: 'ErrorPage' }
+    },
 ]
 
 const router = createRouter({

@@ -15,7 +15,7 @@
             :key=item.id
             @click="menuItemClick(indx)"
         >
-            <svg 
+            <v-icon
                 class="admin-menu-items__item-svg"
                 :class="{ 
                     'admin-menu-items__item--mobile-open-svg': menuSwitcher, 
@@ -23,17 +23,20 @@
                     'admin-menu-items__item--second-item-svg': indx === 1, 
                     'admin-menu-items__item-svg--active': activeItem == indx 
                 }"
-            >
-                <use :xlink:href="require('@/assets/img/sprite.svg') + item.svgLink"></use>
-            </svg>
+                :iconPath="item.svgLink"
+            />
             <span class="admin-menu-items__item-span">{{ item.name }}</span>
         </li>
     </ul>
 </template>
 
 <script>
+import VIcon from './VIcon.vue';
+
 export default {
     name: 'AdminMenuItems',
+
+    components: { VIcon },
 
     props: {
         menuSwitcher: Boolean

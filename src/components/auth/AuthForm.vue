@@ -1,9 +1,10 @@
 <template>
     <form class="auth-form" @submit.prevent="loginHandler">
         <div class="auth-form__company-info">
-            <svg class="auth-form__company-logo">
-                <use xlink:href="../../assets/img/sprite.svg#logo-svg"></use>
-            </svg>
+            <v-icon
+                class="auth-form__company-logo"
+                :iconPath="'#logo-svg'"
+            />
 
             <h3 class="auth-form__company-name">Need for drive</h3>
         </div>
@@ -38,9 +39,12 @@
 
 <script>
 import { mapActions } from 'vuex'
+import VIcon from '../VIcon.vue';
 
 export default {
     name: 'AuthForm',
+
+    components: { VIcon },
 
     data() {
         return {

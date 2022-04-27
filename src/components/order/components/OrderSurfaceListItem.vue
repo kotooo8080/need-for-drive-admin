@@ -69,17 +69,29 @@
 
         <div class="card-info__buttons-block">
             <div class="card-info__button-block card-info__button-block--ready">
-                <img class="card-info__block-img" src="../../../assets/img/ready.svg" alt="">
+                <img 
+                    class="card-info__block-img" 
+                    src="../../../assets/img/ready.svg" 
+                    alt=""
+                >
                 <button class="card-info__block-button">Готово</button>
             </div>
 
             <div class="card-info__button-block card-info__button-block--cancel">
-                <img class="card-info__block-img" src="../../../assets/img/cancel.svg" alt="">
+                <img 
+                    class="card-info__block-img" 
+                    src="../../../assets/img/cancel.svg" 
+                    alt=""
+                >
                 <button class="card-info__block-button">Отмена</button>
             </div>
 
             <div class="card-info__button-block card-info__button-block--change">
-                <img class="card-info__block-img" src="../../../assets/img/change.svg" alt="">
+                <img 
+                    class="card-info__block-img" 
+                    src="../../../assets/img/change.svg" 
+                    alt=""
+                >
                 <button class="card-info__block-button">Изменить</button>
             </div>
         </div>

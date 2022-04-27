@@ -1,9 +1,10 @@
 <template>
     <div class="admin-menu">
         <div class="admin-menu__logo-block">
-            <svg class="admin-menu__logo-svg">
-                <use xlink:href="../../assets/img/sprite.svg#logo-svg"></use>
-            </svg>
+            <v-icon
+                class="admin-menu__logo-svg"
+                :iconPath="'#logo-svg'"
+            />
 
             <h3 class="admin-menu__logo-text">Need for car</h3>
 
@@ -32,11 +33,12 @@
 
 <script>
 import AdminMenuItems from '../AdminMenuItems.vue';
+import VIcon from '../VIcon.vue';
 
 export default {
     name: 'AdminMenu',
 
-    components: { AdminMenuItems },
+    components: { AdminMenuItems, VIcon },
 
     data() {
         return {

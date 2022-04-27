@@ -1,12 +1,11 @@
 <template>
     <div class="admin-header">
         <div class="admin-header__search-str">
-            <svg 
+            <v-icon 
                 class="admin-header__search-str-svg"
                 :class="{ 'admin-header__search-str-svg--focused': searchOnFocus }"
-            >
-                <use xlink:href="../../assets/img/sprite.svg#search-svg"></use>
-            </svg>
+                :iconPath="iconsPaths[0]"
+            />
             
             <input 
                 class="admin-header__search-str-input" 
@@ -16,9 +15,10 @@
         </div>
 
         <div class="admin-header__notification">
-            <svg class="admin-header__notification-svg">
-                <use xlink:href="../../assets/img/sprite.svg#notification-svg"></use>
-            </svg>
+            <v-icon 
+                class="admin-header__notification-svg"
+                :iconPath="iconsPaths[1]"
+            />
         </div>
 
         <div 
@@ -29,10 +29,10 @@
                 <img class="admin-header__avatar" src="../../assets/img/user-img.png" alt="">
                 <h3 class="admin-header__admin-name">Admin</h3>
             </div>
-
-            <svg class="admin-header__arrow-svg">
-                <use xlink:href="../../assets/img/sprite.svg#dropdown-svg"></use>
-            </svg>
+            <v-icon 
+                class="admin-header__arrow-svg"
+                :iconPath="iconsPaths[2]"
+            />
 
             <div v-if="adminInfoOpen" class="admin-header__admin-info-open">
                 <a href="#" class="admin-header__admin-profile">Профиль администратора</a>
@@ -44,14 +44,22 @@
 
 <script>
 import { mapActions } from 'vuex'
+import VIcon from '../VIcon.vue';
 
 export default {
     name: 'AdminHeader',
 
+    components: { VIcon },
+
     data() {
         return {
             searchOnFocus: false,
-            adminInfoOpen: false
+            adminInfoOpen: false,
+            iconsPaths: [
+                '#search-svg',
+                '#notification-svg',
+                '#dropdown-svg'
+            ]
         }
     },
 

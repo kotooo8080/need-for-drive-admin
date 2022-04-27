@@ -2,7 +2,11 @@
     <div class="car-surface-header">
         <car-surface-filters/>
         <div class="car-surface-header__buttons-block">
-            <button class="car-surface-header__button car-surface-header__button--red">Перезагрузить</button>
+            <button class="
+                car-surface-header__button 
+                car-surface-header__button--red
+            "
+            >Перезагрузить</button>
             <button class="car-surface-header__button">Применить</button>
         </div>
     </div>

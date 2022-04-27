@@ -27,12 +27,22 @@
                 <h4 class="car-setting-surface-description__percent">74%</h4>
             </div>
             <div class="car-setting-surface-description__progress">
-                <span class="car-setting-surface-description__progress-bar" style="width: 74%"></span>
+                <span 
+                class="car-setting-surface-description__progress-bar" 
+                style="width: 74%"
+                >
+                </span>
             </div>
         </div>
         <div class="car-setting-surface-description__other-info">
             <h4 class="car-setting-surface-description__other-description">Описание</h4>
-            <h4 class="car-setting-surface-description__other-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae quod dolorum sint alias, possimus illum assumenda eligendi cumque?</h4>
+            <h4 
+                class="car-setting-surface-description__other-text"
+            >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Odio eaque, quidem, commodi soluta qui quae quod dolorum sint alias, 
+                possimus illum assumenda eligendi cumque?
+            </h4>
         </div>
     </div>
 </template>

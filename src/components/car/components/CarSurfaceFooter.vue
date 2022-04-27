@@ -4,9 +4,9 @@
             <button class="car-surface-footer__scroll-button">«</button>
 
             <button 
-                v-for="(card, indx) in cardsInfo"
-                :key="'card' + indx"
-                class="car-surface-footer__page-button"
+                v-for="(card, indx) in cardsInfo" 
+                :key="'card' + indx" 
+                class="car-surface-footer__page-button" 
                 :class="{ 'car-surface-footer__page-button--active': openedPage == indx}" 
             >
                 {{ indx + 1 }}
@@ -25,11 +25,66 @@ export default {
         return {
             openedPage: 0,
             cardsInfo: [ 
-                { photo: '../../../assets/img/car1.png', model: 'ELANTRA', city: 'Санкт-Петербург', street: 'Пушкина 4а', date: '11.04.2022 - 12.04.2022', color: 'Голубой', fullTank: true, childChair: false, rightWheel: true, price: '12600' },
-                { photo: '../../../assets/img/car1.png', model: 'i30', city: 'Уфа', street: 'Нариманова 42', date: '11.04.2022 - 12.04.2022', color: 'Красный', fullTank: false, childChair: true, rightWheel: false, price: '11200' },
-                { photo: '../../../assets/img/car1.png', model: 'i30', city: 'Санкт-Петербург', street: 'Пушкина 4а', date: '11.04.2022 - 12.04.2022', color: 'Зеленый', fullTank: true, childChair: true, rightWheel: false, price: '10500' },
-                { photo: '../../../assets/img/car1.png', model: 'ELANTRA', city: 'Ульяновск', street: 'Нариманова 42', date: '11.04.2022 - 12.04.2022', color: 'Синий', fullTank: false, childChair: false, rightWheel: false, price: '8080' },
-                { photo: '../../../assets/img/car1.png', model: 'Rio', city: 'Санкт-Петербург', street: 'Пушкина 4а', date: '11.04.2022 - 12.04.2022', color: 'Белый', fullTank: true, childChair: true, rightWheel: true, price: '3000' }
+                { 
+                    photo: '../../../assets/img/car1.png', 
+                    model: 'ELANTRA', 
+                    city: 'Санкт-Петербург', 
+                    street: 'Пушкина 4а', 
+                    date: '11.04.2022 - 12.04.2022', 
+                    color: 'Голубой', 
+                    fullTank: true, 
+                    childChair: false, 
+                    rightWheel: true, 
+                    price: '12600' 
+                },
+                { 
+                    photo: '../../../assets/img/car1.png', 
+                    model: 'i30', 
+                    city: 'Уфа', 
+                    street: 'Нариманова 42', 
+                    date: '11.04.2022 - 12.04.2022', 
+                    color: 'Красный', 
+                    fullTank: false, 
+                    childChair: true, 
+                    rightWheel: false, 
+                    price: '11200' 
+                },
+                { 
+                    photo: '../../../assets/img/car1.png', 
+                    model: 'i30', 
+                    city: 'Санкт-Петербург', 
+                    street: 'Пушкина 4а', 
+                    date: '11.04.2022 - 12.04.2022',
+                    color: 'Зеленый', 
+                    fullTank: true, 
+                    childChair: true, 
+                    rightWheel: false, 
+                    price: '10500' 
+                },
+                { 
+                    photo: '../../../assets/img/car1.png', 
+                    model: 'ELANTRA', 
+                    city: 'Ульяновск', 
+                    street: 'Нариманова 42', 
+                    date: '11.04.2022 - 12.04.2022', 
+                    color: 'Синий', 
+                    fullTank: false, 
+                    childChair: false, 
+                    rightWheel: false, 
+                    price: '8080' 
+                },
+                { 
+                    photo: '../../../assets/img/car1.png', 
+                    model: 'Rio', 
+                    city: 'Санкт-Петербург', 
+                    street: 'Пушкина 4а', 
+                    date: '11.04.2022 - 12.04.2022', 
+                    color: 'Белый', 
+                    fullTank: true, 
+                    childChair: true, 
+                    rightWheel: true, 
+                    price: '3000' 
+                }
             ],
         }
     }

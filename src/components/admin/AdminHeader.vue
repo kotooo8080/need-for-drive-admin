@@ -8,7 +8,11 @@
                 <use xlink:href="../../assets/img/sprite.svg#search-svg"></use>
             </svg>
             
-            <input class="admin-header__search-str-input" type="text" placeholder="Поиск ..." @focus="searchOnFocus = true"  @focusout="searchOnFocus = false"/>
+            <input 
+                class="admin-header__search-str-input" 
+                type="text" placeholder="Поиск ..." 
+                @focus="searchOnFocus = true"  
+                @focusout="searchOnFocus = false"/>
         </div>
 
         <div class="admin-header__notification">
@@ -17,7 +21,10 @@
             </svg>
         </div>
 
-        <div class="admin-header__admin-block" @click="adminInfoOpen = !adminInfoOpen">
+        <div 
+            class="admin-header__admin-block" 
+            @click="adminInfoOpen = !adminInfoOpen"
+        >
             <div class="admin-header__admin-info">
                 <img class="admin-header__avatar" src="../../assets/img/user-img.png" alt="">
                 <h3 class="admin-header__admin-name">Admin</h3>

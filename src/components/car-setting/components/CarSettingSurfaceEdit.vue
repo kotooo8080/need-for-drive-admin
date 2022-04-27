@@ -33,7 +33,9 @@
                 <label 
                     :for=color
                     class="car-setting-surface-edit__option-label"
-                    :class="{ 'car-setting-surface-edit__option-label--active': colorCheck(color)}" 
+                    :class="{ 
+                        'car-setting-surface-edit__option-label--active': colorCheck(color)
+                    }" 
                 >{{ color }}
                 </label>
             </div>
@@ -41,9 +43,19 @@
         <div class="car-setting-surface-edit__button-block">
             <div class="car-setting-surface-edit__first-buttons">
                 <button class="car-setting-surface-edit__button">Сохранить</button>
-                <button class="car-setting-surface-edit__button car-setting-surface-edit__button--gray">Отменить</button>
+                <button 
+                    class="
+                        car-setting-surface-edit__button 
+                        car-setting-surface-edit__button--gray
+                    "
+                >Отменить</button>
             </div>
-            <button class="car-setting-surface-edit__button car-setting-surface-edit__button--red">Удалить</button>
+            <button 
+                class="
+                    car-setting-surface-edit__button 
+                    car-setting-surface-edit__button--red
+                "
+            >Удалить</button>
         </div>
     </div>
 </template>

@@ -6,7 +6,8 @@
         <h5 
             class="car-setting-surface-input__description"
             :class="{ 'car-setting-surface-input__description--min': !inputWidth }"
-        >{{ description }}</h5>
+        >{{ description }}
+        </h5>
         <input 
             class="car-setting-surface-input__field" 
             :class="{ 'car-setting-surface-input__field--min': !inputWidth }"

@@ -5,16 +5,30 @@
         <div class="card-info__car-info">
             <div class="card-info__car-main-info">
                 <h3 class="card-info__car-location">
-                    <span class="card-info__car-info-strong">{{ cardsInfo[pageIndx].model }}</span> в <span class="card-info__car-info-strong">{{ cardsInfo[pageIndx].city }}</span>, {{ cardsInfo[pageIndx].street }}
+                    <span class="card-info__car-info-strong">
+                        {{ cardsInfo[pageIndx].model }}
+                    </span> в 
+                    <span class="card-info__car-info-strong">
+                        {{ cardsInfo[pageIndx].city }}
+                    </span>, 
+                    {{ cardsInfo[pageIndx].street }}
                 </h3>
             </div>
 
             <div class="card-info__date">
-                <h3 class="card-info__date-text"><span>{{ cardsInfo[pageIndx].date }}</span></h3>
+                <h3 class="card-info__date-text">
+                    <span>
+                        {{ cardsInfo[pageIndx].date }}
+                    </span>
+                </h3>
             </div>
 
             <div class="card-info__color">
-                <h3 class="card-info__color-name">Цвет: <span class="card-info__color-name-strong">{{ cardsInfo[pageIndx].color }}</span></h3>
+                <h3 class="card-info__color-name">Цвет: 
+                    <span class="card-info__color-name-strong">
+                        {{ cardsInfo[pageIndx].color }}
+                    </span>
+                </h3>
             </div>
         </div>
 
@@ -85,11 +99,36 @@ export default {
         return {
             checkedServices: [],
             cardsInfo: [ 
-                { photo: '../../../assets/img/car1.png', model: 'ELANTRA', city: 'Санкт-Петербург', street: 'Пушкина 4а', date: '11.04.2022 - 12.04.2022', color: 'Голубой', fullTank: true, childChair: false, rightWheel: true, price: '12600' },
-                { photo: '../../../assets/img/car1.png', model: 'i30', city: 'Уфа', street: 'Нариманова 42', date: '11.04.2022 - 12.04.2022', color: 'Красный', fullTank: false, childChair: true, rightWheel: false, price: '11200' },
-                { photo: '../../../assets/img/car1.png', model: 'i30', city: 'Санкт-Петербург', street: 'Пушкина 4а', date: '11.04.2022 - 12.04.2022', color: 'Зеленый', fullTank: true, childChair: true, rightWheel: false, price: '10500' },
-                { photo: '../../../assets/img/car1.png', model: 'ELANTRA', city: 'Ульяновск', street: 'Нариманова 42', date: '11.04.2022 - 12.04.2022', color: 'Синий', fullTank: false, childChair: false, rightWheel: false, price: '8080' },
-                { photo: '../../../assets/img/car1.png', model: 'Rio', city: 'Санкт-Петербург', street: 'Пушкина 4а', date: '11.04.2022 - 12.04.2022', color: 'Белый', fullTank: true, childChair: true, rightWheel: true, price: '3000' }
+                { 
+                    photo: '../../../assets/img/car1.png', model: 'ELANTRA', 
+                    city: 'Санкт-Петербург', street: 'Пушкина 4а', date: '11.04.2022 - 12.04.2022', 
+                    color: 'Голубой', fullTank: true, childChair: false, rightWheel: true, 
+                    price: '12600' 
+                },
+                { 
+                    photo: '../../../assets/img/car1.png', model: 'i30', 
+                    city: 'Уфа', street: 'Нариманова 42', date: '11.04.2022 - 12.04.2022', 
+                    color: 'Красный', fullTank: false, childChair: true, rightWheel: false, 
+                    price: '11200' 
+                },
+                { 
+                    photo: '../../../assets/img/car1.png', model: 'i30', 
+                    city: 'Санкт-Петербург', street: 'Пушкина 4а', date: '11.04.2022 - 12.04.2022', 
+                    color: 'Зеленый', fullTank: true, childChair: true, rightWheel: false, 
+                    price: '10500' 
+                },
+                { 
+                    photo: '../../../assets/img/car1.png', model: 'ELANTRA', 
+                    city: 'Ульяновск', street: 'Нариманова 42', date: '11.04.2022 - 12.04.2022', 
+                    color: 'Синий', fullTank: false, childChair: false, rightWheel: false, 
+                    price: '8080' 
+                },
+                { 
+                    photo: '../../../assets/img/car1.png', model: 'Rio', 
+                    city: 'Санкт-Петербург', street: 'Пушкина 4а', date: '11.04.2022 - 12.04.2022', 
+                    color: 'Белый', fullTank: true, childChair: true, rightWheel: true, 
+                    price: '3000' 
+                }
             ],
 
             services: [

@@ -3,7 +3,9 @@
         v-if="$route.path !== '/admin/error'"
         class="content-description"
     >
-        <h2 class="content-description__content-name">{{ contentNamesArr[contentIndex] }}</h2>
+        <h2 class="content-description__content-name">
+            {{ contentNamesArr[contentIndex] }}
+        </h2>
     </div>
 </template>
 

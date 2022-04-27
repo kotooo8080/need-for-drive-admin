@@ -37,13 +37,55 @@ export default {
         return {
             clickedCar: 0,
             cars: [
-                { brand: 'Opel', model: 'Astra', color: 'голубая', number: '1еее11', category: 'Эконом' },
-                { brand: 'Skoda', model: 'Fabia', color: 'красная', number: '2еап15', category: 'Эконом+' },
-                { brand: 'Skoda', model: 'Octavia', color: 'белая', number: '2еае75', category: 'Комфорт' },
-                { brand: 'Opel', model: 'Astra', color: 'голубая', number: '1еее11', category: 'Эконом' },
-                { brand: 'Skoda', model: 'Fabia', color: 'красная', number: '2еап15', category: 'Эконом+' },
-                { brand: 'Skoda', model: 'Octavia', color: 'белая', number: '2еае75', category: 'Комфорт' },
-                { brand: 'Opel', model: 'Astra', color: 'голубая', number: '1еее11', category: 'Эконом' },
+                { 
+                    brand: 'Opel', 
+                    model: 'Astra', 
+                    color: 'голубая', 
+                    number: '1еее11', 
+                    category: 'Эконом' 
+                },
+                { 
+                    brand: 'Skoda', 
+                    model: 'Fabia', 
+                    color: 'красная', 
+                    number: '2еап15', 
+                    category: 'Эконом+' 
+                },
+                { 
+                    brand: 'Skoda', 
+                    model: 'Octavia', 
+                    color: 'белая', 
+                    number: '2еае75', 
+                    category: 'Комфорт' 
+                },
+                { 
+                    brand: 'Opel', 
+                    model: 'Astra', 
+                    color: 'голубая', 
+                    number: '1еее11', 
+                    category: 'Эконом' 
+                },
+                { 
+                    brand: 'Skoda', 
+                    model: 'Fabia', 
+                    color: 'красная', 
+                    number: '2еап15', 
+                    category: 'Эконом+' 
+                },
+                { 
+                    brand: 'Skoda', 
+                    model: 'Octavia', 
+                    color: 'белая', 
+                    number: '2еае75', 
+                    category: 'Комфорт' 
+                },
+                { 
+                    brand: 'Opel', 
+                    model: 'Astra', 
+                    color: 'голубая', 
+                    number: '1еее11', 
+                    category: 'Эконом' 
+                },
             ]
         }
     },

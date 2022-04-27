@@ -22,7 +22,10 @@
             class="admin-menu__items"
             :class="{ 'admin-menu__items--mobile-open': menuSwitcher }"
         >
-            <admin-menu-items :menuSwitcher="menuSwitcher" @menuClick="menuItemClick"/>
+            <admin-menu-items 
+                :menuSwitcher="menuSwitcher" 
+                @menuClick="menuItemClick"
+            />
         </div>
     </div>
 </template>

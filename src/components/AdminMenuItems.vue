@@ -87,6 +87,15 @@ export default {
 
             &--mobile-open {
                 width: 100%;
+
+                opacity: 1;
+                transition: 1s;
+                animation: show 1s 1;
+
+                @keyframes show {
+                    0% { opacity: 0; }
+                    100% { opacity:1; }
+                }
             }
 
             &--mobile-open-svg {

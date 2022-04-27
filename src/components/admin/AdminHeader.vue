@@ -238,6 +238,15 @@ export default {
 
             z-index: 3;
 
+            opacity: 1;
+            transition: 1s;
+            animation: show 0.5s 1;
+
+            @keyframes show {
+                0% { opacity: 0; }
+                100% { opacity:1; }
+            }
+
             @media ( max-width: 767px ) {
                 width: 200px;
             }

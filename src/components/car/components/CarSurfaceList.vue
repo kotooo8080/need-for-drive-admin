@@ -99,5 +99,9 @@ export default {
 
             color: $admin-gray;
         }
+
+        &__table-row:hover {
+            background: $content-background-white;
+        }
     }
 </style>

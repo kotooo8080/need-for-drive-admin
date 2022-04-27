@@ -1,6 +1,6 @@
 <template>
     <div class="admin-menu">
-         <div class="admin-menu__logo-block">
+        <div class="admin-menu__logo-block">
             <svg class="admin-menu__logo-svg">
                 <use xlink:href="../../assets/img/sprite.svg#logo-svg"></use>
             </svg>
@@ -49,6 +49,7 @@ export default {
         menuItemClick(item) {
             this.$emit('menuClick', Number(item));
             this.activeItem = Number(item);
+            this.menuSwitcher = false;
         }
     }
 }
@@ -90,6 +91,8 @@ export default {
 
             @media ( max-width: 767px ) {
                 width: 100%;
+                border-bottom: none;
+                box-shadow: none;
             }
         }
 

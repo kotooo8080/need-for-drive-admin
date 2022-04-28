@@ -108,6 +108,8 @@ export default {
         border-radius: 9px;
         padding: 19.5px 18px;
 
+        box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
+
         @media ( max-width: 834px ) {
             width: calc(55% - 28px);
             height: fit-content;

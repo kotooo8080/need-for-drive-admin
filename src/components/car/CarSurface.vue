@@ -36,6 +36,12 @@ export default {
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
 
+        box-shadow: 
+            0px 1px 0px rgba(90, 97, 105, 0.11), 
+            0px 2px 4px rgba(90, 97, 105, 0.12), 
+            0px 5px 5px rgba(90, 97, 105, 0.06), 
+            0px 3.5px 35px rgba(90, 97, 105, 0.1);
+
         @media ( max-width: 767px ) {
             margin-left: 24px;
             width: calc(100% - 48px);

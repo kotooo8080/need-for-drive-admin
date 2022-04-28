@@ -86,6 +86,7 @@ export default {
         height: 67.5px;
 
         box-shadow: 0px 2.5px 9.5px rgba(90, 97, 105, 0.12);
+        z-index: 2;
 
         @media ( max-width: 1024px ) {
             justify-content: flex-start;
@@ -130,7 +131,7 @@ export default {
 
         &__search-str-input {
             width: calc(100% - 24px);
-            height: 67.5px;
+            height: 65.5px;
 
             border: none;
             outline: none;

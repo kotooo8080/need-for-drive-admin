@@ -92,7 +92,7 @@ export default {
             border-bottom: 1px solid $light-gray;
 
             box-shadow: 0px 2.5px 9.5px rgba(90, 97, 105, 0.12);
-            z-index: 2;
+            z-index: 3;
 
             @media ( max-width: 767px ) {
                 width: 100%;

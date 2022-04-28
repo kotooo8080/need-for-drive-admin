@@ -167,7 +167,7 @@ export default {
             font-size: 11px;
             line-height: 12px;
 
-            color: $blak-gray;
+            color: $black-gray;
         }
 
         &__input-field {

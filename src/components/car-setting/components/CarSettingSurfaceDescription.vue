@@ -13,12 +13,18 @@
             >Компакт-кар
             </h5>
             <div class="car-setting-surface-description__input-field">
+                <div 
+                    class="car-setting-surface-description__fake-input"
+                >Выберите файл...</div>
+                <button 
+                    class="car-setting-surface-description__button"
+                >Выбрать</button>
                 <input 
                     class="car-setting-surface-description__input" 
-                    type="text"
-                    value="Выберите файл..."
+                    type="file"
+                    ref="carImg"
+                    @change="handleFileUpload()"
                 >
-                <button class="car-setting-surface-description__button">Обзор</button>
             </div>
         </div>
         <div class="car-setting-surface-description__scale">
@@ -50,6 +56,18 @@
 <script>
 export default {
     name: 'CarSettingSurfaceDescription',
+
+    data() {
+        return {
+            uploadedCarImg: {}
+        }
+    },
+
+    methods: {
+        handleFileUpload() {
+            this.uploadedcarImg = this.$refs.carImg.files[0];
+        }
+    },
 }
 </script>
 
@@ -131,12 +149,14 @@ export default {
         }
 
         &__input-field {
+            position: relative;
+            overflow: hidden;
+
             display: flex;
             flex-direction: row;
 
             height: 29px;
             width: 90%;
-
             border: 0.5px solid $white-gray;
             border-radius: 4px;
 
@@ -145,11 +165,14 @@ export default {
             }
         }
 
-        &__input {
-            height: 27px;
-            width: calc(70% - 26px);
+        &__fake-input {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            width: calc(70% - 13px);
+            height: 29px;
             padding-left: 13px;
-            padding-right: 13px;
 
             font-family: 'Roboto', sans-serif;
             font-style: normal;
@@ -157,11 +180,19 @@ export default {
             font-size: 10px;
             line-height: 12px;
 
-            border: none;
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-            border-right: 0.5px solid $white-gray;
-            color: $blak-gray;
+            color: $black-gray;
+        }
+
+        &__input {
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+
+            opacity: 0;
+            cursor: pointer
         }
 
         &__button {
@@ -175,7 +206,7 @@ export default {
             font-size: 10px;
             line-height: 12px;
             
-            color: $blak-gray;
+            color: $black-gray;
             background: $white;
         }
 

@@ -16,8 +16,10 @@
             <input
                 v-model="email"
                 class="auth-form__input-field"
+                :class="{ 'auth-form__input-field--error': isDataWrong }"
                 type="text"
                 placeholder="Введите почту"
+                @change="removeErrorClass"
             >
 
             <h4 class="auth-form__input-description">Пароль</h4>
@@ -25,8 +27,10 @@
             <input
                 v-model="password"
                 class="auth-form__input-field"
+                :class="{ 'auth-form__input-field--error': isDataWrong }"
                 type="password"
                 placeholder="Введите пароль"
+                @change="removeErrorClass"
             >
 
             <div class="auth-form__buttons">
@@ -49,7 +53,8 @@ export default {
     data() {
         return {
             email : '',
-            password : ''
+            password : '',
+            isDataWrong: false
         }
     },
 
@@ -64,19 +69,19 @@ export default {
                 password,
             };
 
-            let isFull = true;
-            for (const key in data) {
-                if (!data[key]) {
-                    isFull = false;
-                    break;
-                }
-            }
-
-            if (isFull) {
-                this.login(data);
-                this.$router.push('/admin/order');
-            }
+            this.login(data)
+                .then(() => {
+                    this.isDataWrong = false;
+                    this.$router.push('/admin/order');
+                })
+                .catch(err => { 
+                    this.isDataWrong = true;
+                })
         },
+
+        removeErrorClass() {
+            this.isDataWrong = false;
+        }
     }
 }
 </script>
@@ -185,6 +190,10 @@ export default {
             line-height: 13px;
 
             color: $blue-gray;
+
+            &--error {
+                border: 1px solid $error-red;
+            }
         }
 
         &__buttons {

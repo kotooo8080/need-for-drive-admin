@@ -1,6 +1,5 @@
 import { createWebHistory, createRouter } from 'vue-router'
-
-import { logIn } from '../middleware/auth'
+import store from '../store/store.js'
 
 import OrderListPage from '../pages/OrderListPage.vue'
 import CarListPage from '../pages/CarListPage.vue'
@@ -64,16 +63,15 @@ const router = createRouter({
     routes,
 })
 
-
 router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.requiresAuth)) {        
-        if (!logIn()) {
-            next({ name: 'LoginPage' })
-        } else {
+    if(to.matched.some(record => record.meta.requiresAuth)) {
+        if (store.getters.isLoggedIn) {
             next()
+            return
         }
+        next('/login') 
     } else {
-        next()
+        next() 
     }
 })
 

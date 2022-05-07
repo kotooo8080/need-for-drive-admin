@@ -1,6 +1,6 @@
 <template>
     <div 
-        v-if="$route.path !== '/admin/error'"
+        v-if="!isErrorPage"
         class="content-description"
     >
         <h2 class="content-description__content-name">
@@ -19,6 +19,7 @@ export default {
 
     data() {
         return {
+            isErrorPage: false,
             contentNamesArr: [
                 'Карточка автомобиля',
                 'Список авто',
@@ -26,6 +27,25 @@ export default {
             ]
         }
     },
+
+    created() {
+        this.isErrorPage = this.checkRoute();
+    },
+
+    watch: {
+        '$route' (to, from) {
+            this.isErrorPage = this.checkRoute();
+        }
+    },
+
+    methods: {
+        checkRoute: function() {
+            if(this.$route.path && (this.$route.path.indexOf('error') + 1)) {
+                return true;
+            }
+            return false;
+        }
+    }
 }
 </script>
 

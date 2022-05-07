@@ -23,7 +23,7 @@
                     'admin-menu-items__item--second-item-svg': indx === 1, 
                     'admin-menu-items__item-svg--active': activeItem == indx 
                 }"
-                :iconPath="item.svgLink"
+                :icon-path="item.svgLink"
             />
             <span class="admin-menu-items__item-span">{{ item.name }}</span>
         </li>

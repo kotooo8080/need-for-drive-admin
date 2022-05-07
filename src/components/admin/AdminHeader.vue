@@ -4,7 +4,7 @@
             <v-icon 
                 class="admin-header__search-str-svg"
                 :class="{ 'admin-header__search-str-svg--focused': searchOnFocus }"
-                :iconPath="iconsPaths[0]"
+                :icon-path="iconsPaths[0]"
             />
             
             <input 
@@ -17,7 +17,7 @@
         <div class="admin-header__notification">
             <v-icon 
                 class="admin-header__notification-svg"
-                :iconPath="iconsPaths[1]"
+                :icon-path="iconsPaths[1]"
             />
         </div>
 
@@ -31,7 +31,7 @@
             </div>
             <v-icon 
                 class="admin-header__arrow-svg"
-                :iconPath="iconsPaths[2]"
+                :icon-path="iconsPaths[2]"
             />
 
             <div v-if="adminInfoOpen" class="admin-header__admin-info-open">

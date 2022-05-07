@@ -1,10 +1,10 @@
-import { createStore } from 'vuex';
-import axios from 'axios'
+import { createStore } from 'vuex'
+import api from '../services/api/api'
 
 const store = createStore({
     state: {
         status: '',
-
+        err: null,
         token: localStorage.getItem('user-token') || '',
         refreshToken: localStorage.getItem('refresh-token') || '',
     },
@@ -17,71 +17,32 @@ const store = createStore({
             state.refreshToken = refreshToken;
         },
 
-        authError( state ){
-            state.status = 'error';
+        authError( state, err ) {
+            state.status = 'error'
+            state.err = err
         },
 
-        logout( state ){
+        logout( state ) {
             state.status = '';
-
             state.token = '';
             state.refreshToken = ''
         },
     },
 
     actions: {
-        login({ commit }, data) {
-            return new Promise((resolve, reject) => {
-                axios({ 
-                    method: 'post',
-                    url: 'https://api-factory.simbirsoft1.com/api/auth/login',
-                    headers: {
-                        'X-Api-Factory-Application-Id': process.env.VUE_APP_APPLICATION_ID,
-                        'Authorization': 'Basic ' + window.btoa(unescape(encodeURIComponent(
-                            process.env.VUE_APP_RANDOM_HASH + 
-                            ':' + 
-                            process.env.VUE_APP_CLIENT_SECRET
-                        ))),
-                        'Content-type': 'application/json; charset=UTF-8'
-                    },
-                    data: {
-                        "username": data.email,
-                        "password": data.password,
-                    }  
-                })
-                .then(res => {
-                    const token = res.data.access_token;
-                    const refreshToken = res.data.refresh_token;
+        async login({ commit }, data) {
+            try {
+                const { token, refreshToken } = await api.signIn(data)
+                commit('authSuccess', token, refreshToken)
 
-                    localStorage.setItem('user-token', token);
-                    localStorage.setItem('refresh-token', refreshToken);
-
-                    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                    commit('authSuccess', token, refreshToken);
-
-                    resolve(res);
-                })
-                .catch(err => {
-                    commit('authError');
-
-                    localStorage.removeItem('user-token');
-                    localStorage.removeItem('refresh-token');
-
-                    reject(err);
-                })
-            })
+            } catch (err) {
+                commit('authError', err)
+            }
         },
 
-        logout({ commit }) {
-            return new Promise((resolve) => {
-                commit('logout');
-
-                localStorage.removeItem('user-token');
-                localStorage.removeItem('refresh-token');
-                
-                delete axios.defaults.headers.common['Authorization'];
-                resolve();
-            })
+        async logout({ commit }) {
+            await api.logOut();
+            commit('logout');
         }
     },
 

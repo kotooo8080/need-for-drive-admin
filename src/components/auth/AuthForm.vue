@@ -3,7 +3,7 @@
         <div class="auth-form__company-info">
             <v-icon
                 class="auth-form__company-logo"
-                :iconPath="'#logo-svg'"
+                :icon-path="'#logo-svg'"
             />
 
             <h3 class="auth-form__company-name">Need for drive</h3>
@@ -27,11 +27,18 @@
             <input
                 v-model="password"
                 class="auth-form__input-field"
-                :class="{ 'auth-form__input-field--error': isDataWrong }"
+                :class="{ 
+                    'auth-form__input-field--error': isDataWrong, 
+                    'auth-form__input-field--last': isDataWrong 
+                }"
                 type="password"
                 placeholder="Введите пароль"
                 @change="removeErrorClass"
             >
+            <h6 
+                v-if="isDataWrong"
+                class="auth-form__error"
+            >Неправильный логин или пароль</h6>
 
             <div class="auth-form__buttons">
                 <a href="" class="auth-form__get-access-link">Запросить доступ</a>
@@ -59,30 +66,25 @@ export default {
     },
 
     methods: {
-        ...mapActions([ 'login' ]),
+        ...mapActions(['login']),
 
-        loginHandler () {
-            const { email, password } = this;
+        async loginHandler () {
+            const { email, password } = this
             
             const data = {
                 email,
                 password,
             };
 
-            this.login(data)
-                .then(() => {
-                    this.isDataWrong = false;
-                    this.$router.push('/admin/order');
-                })
-                .catch(err => { 
-                    this.isDataWrong = true;
-                })
+            await this.login(data)
+            this.isDataWrong = true;
+            this.$router.push({ name: 'OrderListPage' })
         },
 
         removeErrorClass() {
             this.isDataWrong = false;
-        }
-    }
+        },
+    },
 }
 </script>
 
@@ -191,9 +193,25 @@ export default {
 
             color: $blue-gray;
 
+            &--last {
+                margin-bottom: 4px;
+            }
+
             &--error {
                 border: 1px solid $error-red;
             }
+        }
+
+        &__error {
+            margin: 0;
+
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 11px;
+
+            color: $error-red;
         }
 
         &__buttons {

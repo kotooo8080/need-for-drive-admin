@@ -10,9 +10,12 @@ const axiosInstance = {
                 ':' + process.env.VUE_APP_CLIENT_SECRET
             ))),
             'Content-type': 'application/json; charset=UTF-8'
-        }
+        },
     }),
-    setToken: (token) => axios.defaults.headers.common['Authorization'] = `Bearer ${token}`,
+
+    setToken: (token) =>  {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    },
     deleteToken: () => delete axios.defaults.headers.common['Authorization']
 }
 

@@ -1,33 +1,33 @@
 <template>
-    <car-surface />
+    <rate-surface/>
 </template>
 
 <script>
-import CarSurface from '@/components/car/CarSurface.vue'
+import RateSurface from '@/components/rate/RateSurface.vue';
 import { mapActions } from 'vuex';
 import { mapMutations } from 'vuex'
 import { mapState } from 'vuex'
 
 export default {
-    name: 'CarListPage',
-    
+    name: 'RateListPage',
+
     components: {
-        CarSurface,
+        RateSurface
     },
 
     async created() {
-        this.changeActivePage(1);
+        this.changeActivePage(5);
         await this.getDataHandler();
     },
 
     methods: {
         ...mapActions(['getServerData']),
-        ...mapState(['cars']),
+        ...mapState(['rates']),
         ...mapMutations(['changeActivePage']),
 
         async getDataHandler () {
-            const servPath = 'db/car';
-            await this.getServerData({ name: servPath, indx: 3 });
+            const servPath = 'db/rate';
+            await this.getServerData({ name: servPath, indx: 2 });
         },
     },
 }

@@ -4,6 +4,9 @@ import store from '../store/store.js'
 import OrderListPage from '../pages/OrderListPage.vue'
 import CarListPage from '../pages/CarListPage.vue'
 import CarSettingPage from '../pages/CarSettingPage.vue'
+import PointListPage from '../pages/PointListPage.vue'
+import CategoryListPage from '../pages/CategoryListPage.vue'
+import RateListPage from '../pages/RateListPage.vue'
 import ErrorPage from '../pages/ErrorPage.vue'
 import LoginPage from '../pages/LoginPage.vue'
 
@@ -21,6 +24,33 @@ const routes = [
         path: '/admin/car',
         name: 'CarListPage',
         component: CarListPage,
+        meta: {
+            requiresAuth: true,
+            layout: 'AdminLayout',
+        },
+    },
+    {
+        path: '/admin/point',
+        name: 'PointListPage',
+        component: PointListPage,
+        meta: {
+            requiresAuth: true,
+            layout: 'AdminLayout',
+        },
+    },
+    {
+        path: '/admin/category',
+        name: 'CategoryListPage',
+        component: CategoryListPage,
+        meta: {
+            requiresAuth: true,
+            layout: 'AdminLayout',
+        },
+    },
+    {
+        path: '/admin/rate',
+        name: 'RateListPage',
+        component: RateListPage,
         meta: {
             requiresAuth: true,
             layout: 'AdminLayout',

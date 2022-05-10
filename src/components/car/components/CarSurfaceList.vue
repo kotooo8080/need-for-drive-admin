@@ -4,25 +4,26 @@
             <caption style="display: none;">Список авто</caption>
             <thead class="car-surface-list__table-header">
                 <tr>
-                    <th scope="col">Марка</th>
                     <th scope="col">Модель</th>
-                    <th scope="col">Цвет</th>
-                    <th scope="col">Номер</th>
-                    <th scope="col">Категория</th>
+                    <th scope="col">Цвета</th>
+                    <th scope="col">Цена</th>
                 </tr>
             </thead>
             <tbody>
                 <tr 
                     class="car-surface-list__table-row"
-                    v-for="(car, indx) in cars" 
+                    v-for="(car, indx) in cars()" 
                     :key="indx" 
                     @click="itemClicked(car)"
                 >
-                    <td>{{ car.brand }}</td>
-                    <td>{{ car.model }}</td>
-                    <td>{{ car.color }}</td>
-                    <td>{{ car.number }}</td>
-                    <td>{{ car.category }}</td>
+                    <td>{{ car.name }}</td>
+                    <td class="car-surface-list__cell-colors">
+                        <h4 
+                            v-for="color in car.colors"
+                            :key="color"
+                        >{{ color }},</h4>
+                    </td>
+                    <td>{{ car.priceMin }} - {{ car.priceMax }}</td>
                 </tr>
             </tbody>
         </table>
@@ -30,67 +31,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
     name: 'CarSurfaceList',
 
     data() {
         return {
             clickedCar: 0,
-            cars: [
-                { 
-                    brand: 'Opel', 
-                    model: 'Astra', 
-                    color: 'голубая', 
-                    number: '1еее11', 
-                    category: 'Эконом' 
-                },
-                { 
-                    brand: 'Skoda', 
-                    model: 'Fabia', 
-                    color: 'красная', 
-                    number: '2еап15', 
-                    category: 'Эконом+' 
-                },
-                { 
-                    brand: 'Skoda', 
-                    model: 'Octavia', 
-                    color: 'белая', 
-                    number: '2еае75', 
-                    category: 'Комфорт' 
-                },
-                { 
-                    brand: 'Opel', 
-                    model: 'Astra', 
-                    color: 'голубая', 
-                    number: '1еее11', 
-                    category: 'Эконом' 
-                },
-                { 
-                    brand: 'Skoda', 
-                    model: 'Fabia', 
-                    color: 'красная', 
-                    number: '2еап15', 
-                    category: 'Эконом+' 
-                },
-                { 
-                    brand: 'Skoda', 
-                    model: 'Octavia', 
-                    color: 'белая', 
-                    number: '2еае75', 
-                    category: 'Комфорт' 
-                },
-                { 
-                    brand: 'Opel', 
-                    model: 'Astra', 
-                    color: 'голубая', 
-                    number: '1еее11', 
-                    category: 'Эконом' 
-                },
-            ]
         }
     },
 
     methods: {
+        ...mapState(['cars']),
+
         itemClicked (clickedRow) {
             this.clickedCar = clickedRow.index;
         }
@@ -144,6 +97,16 @@ export default {
 
         &__table-row:hover {
             background: $content-background-white;
+        }
+
+        &__cell-colors {
+            display: flex;
+            flex-direction: row;
+
+            flex-wrap: wrap;
+            width: fit-content;
+
+            padding: 0 20px;
         }
     }
 </style>

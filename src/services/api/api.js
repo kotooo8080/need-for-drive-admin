@@ -1,5 +1,6 @@
 import axiosInstance from './instance'
 import { auth } from '../auth/auth'
+import { getData } from '../getData/get'
 
 async function signIn (data) {
     try {
@@ -30,4 +31,13 @@ function logOut() {
     axiosInstance.deleteToken()
 }
 
-export default { signIn, logOut }
+async function getServerData (serviceName) {
+    try {
+        const result = await getData(axiosInstance, serviceName);
+        return result
+    } catch (err) {
+        return err
+    }
+}
+
+export default { signIn, logOut, getServerData }

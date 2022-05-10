@@ -1,33 +1,33 @@
 <template>
-    <car-surface />
+    <category-surface/>
 </template>
 
 <script>
-import CarSurface from '@/components/car/CarSurface.vue'
+import CategorySurface from '@/components/category/CategorySurface.vue';
 import { mapActions } from 'vuex';
 import { mapMutations } from 'vuex'
 import { mapState } from 'vuex'
 
 export default {
-    name: 'CarListPage',
-    
+    name: 'CategoryListPage',
+
     components: {
-        CarSurface,
+        CategorySurface 
     },
 
     async created() {
-        this.changeActivePage(1);
+        this.changeActivePage(4);
         await this.getDataHandler();
     },
 
     methods: {
         ...mapActions(['getServerData']),
-        ...mapState(['cars']),
+        ...mapState(['categories']),
         ...mapMutations(['changeActivePage']),
 
         async getDataHandler () {
-            const servPath = 'db/car';
-            await this.getServerData({ name: servPath, indx: 3 });
+            const servPath = 'db/category';
+            await this.getServerData({ name: servPath, indx: 1 });
         },
     },
 }

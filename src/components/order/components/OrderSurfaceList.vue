@@ -1,13 +1,18 @@
 <template>
     <div class="order-list">
         <div class="order-list__items">
-            <order-surface-list-item :pageIndx="openedPage"/>
+            <order-surface-list-item 
+                v-for="order in orders()"
+                :key="order"
+                :pageIndx="openedPage"
+            />
         </div>
     </div>
 </template>
 
 <script>
 import OrderSurfaceListItem from './OrderSurfaceListItem.vue';
+import { mapState } from 'vuex';
 
 export default {
     name: 'OrderSurfaceList',
@@ -19,6 +24,10 @@ export default {
             openedPage: 0,
         }
     },
+
+    methods: {
+        ...mapState(['orders']),
+    }
 }
 </script>
 

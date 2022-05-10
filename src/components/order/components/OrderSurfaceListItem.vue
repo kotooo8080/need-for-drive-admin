@@ -166,6 +166,8 @@ export default {
         display: flex;
         flex-direction: row;
         height: 276.5px;
+
+        height: 90px;
         width: 100%;
 
         @media ( max-width: 1024px ) {

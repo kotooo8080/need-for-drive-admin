@@ -7,6 +7,13 @@ const store = createStore({
         err: null,
         token: localStorage.getItem('user-token') || '',
         refreshToken: localStorage.getItem('refresh-token') || '',
+
+        activePage: 0,
+        points: [],
+        categories: [],
+        rates: [],
+        cars: [],
+        orders: []
     },
 
     mutations: {
@@ -27,6 +34,30 @@ const store = createStore({
             state.token = '';
             state.refreshToken = ''
         },
+
+        pointsSet ( state, data ) {
+            state.points = data;
+        },
+
+        categoriesSet ( state, data ) {
+            state.categories = data;
+        },
+
+        ratesSet ( state, data ) {
+            state.rates = data;
+        },
+
+        carsSet ( state, data ) {
+            state.cars = data;
+        },
+
+        ordersSet ( state, data ) {
+            state.orders = data;
+        },
+
+        changeActivePage ( state, pageIndx ) {
+            state.activePage = pageIndx;
+        }
     },
 
     actions: {
@@ -43,6 +74,35 @@ const store = createStore({
         async logout({ commit }) {
             await api.logOut();
             commit('logout');
+        },
+
+        async getServerData({ commit }, serviceData) {
+            try {
+                const serverData = await api.getServerData(serviceData.name);
+
+                switch (serviceData.indx) {
+                    case 0: {
+                        commit('pointsSet', serverData.data.data);
+                        break;
+                    }
+                    case 1: {
+                        commit('categoriesSet', serverData.data.data);
+                        break;
+                    }
+                    case 2: {
+                        commit('ratesSet', serverData.data.data);
+                        break;
+                    }
+                    case 3: {
+                        commit('carsSet', serverData.data.data);
+                        break;
+                    }
+                    case 4: {
+                        commit('ordersSet', serverData.data.data);
+                        break;
+                    }
+                }
+            } catch (err) {}
         }
     },
 

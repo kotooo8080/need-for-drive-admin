@@ -1,33 +1,33 @@
 <template>
-    <car-surface />
+    <point-surface/>
 </template>
 
 <script>
-import CarSurface from '@/components/car/CarSurface.vue'
+import PointSurface from '@/components/point/PointSurface.vue'
 import { mapActions } from 'vuex';
 import { mapMutations } from 'vuex'
 import { mapState } from 'vuex'
 
 export default {
-    name: 'CarListPage',
-    
-    components: {
-        CarSurface,
+    name: 'PointListPage',
+
+    components: { 
+        PointSurface 
     },
 
     async created() {
-        this.changeActivePage(1);
+        this.changeActivePage(3);
         await this.getDataHandler();
     },
 
     methods: {
         ...mapActions(['getServerData']),
-        ...mapState(['cars']),
+        ...mapState(['points']),
         ...mapMutations(['changeActivePage']),
 
         async getDataHandler () {
-            const servPath = 'db/car';
-            await this.getServerData({ name: servPath, indx: 3 });
+            const servPath = 'db/point';
+            await this.getServerData({ name: servPath, indx: 0 });
         },
     },
 }

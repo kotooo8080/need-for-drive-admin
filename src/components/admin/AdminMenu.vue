@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import AdminMenuItems from '../AdminMenuItems.vue';
+import AdminMenuItems from './AdminMenuItems.vue';
 import VIcon from '../VIcon.vue';
 
 export default {

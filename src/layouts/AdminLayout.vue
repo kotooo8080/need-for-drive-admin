@@ -18,6 +18,8 @@ import AdminHeader from '@/components/admin/AdminHeader'
 import AdminFooter from '@/components/admin/AdminFooter'
 import ContentDescription from '@/components/ContentDescription.vue'
 
+import { mapState } from 'vuex'
+
 export default {
     name: 'AdminLayout',
 
@@ -30,22 +32,30 @@ export default {
 
     data() {
         return {
-            contentIndex: 2
+            contentIndex: 0,
+            contentPaths: [
+                '/car-setting',
+                '/car',
+                '/order',
+                '/point',
+                '/category',
+                '/rate'
+            ]
+        }
+    },
+
+    created() {
+        if(this.activePage) {
+            this.contentIndex = this.activePage();
         }
     },
 
     methods: {
+        ...mapState(['activePage']),
+
         pathChange(componentIndx) {
             this.contentIndex = componentIndx;
-            if(componentIndx == 0) {
-                this.$router.push('/admin/car-setting');
-            }
-            if(componentIndx == 1) {
-                this.$router.push('/admin/car');
-            }
-            if(componentIndx == 2) {
-                this.$router.push('/admin/order');
-            }
+            this.$router.push('/admin' + this.contentPaths[componentIndx]);
         }
     }
 }

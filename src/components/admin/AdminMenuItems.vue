@@ -31,12 +31,15 @@
 </template>
 
 <script>
-import VIcon from './VIcon.vue';
+import VIcon from '../VIcon.vue';
+import { mapState } from 'vuex'
 
 export default {
     name: 'AdminMenuItems',
 
-    components: { VIcon },
+    components: { 
+        VIcon 
+    },
 
     props: {
         menuSwitcher: Boolean
@@ -44,16 +47,21 @@ export default {
 
     data() {
         return {
-            activeItem: 2,
+            activeItem: this.activePage(),
             menuItems: [
                 { id: 'it1', name: 'Карточка автомобиля', svgLink: '#edit-card-svg' },
                 { id: 'it2', name: 'Список авто', svgLink: '#auto-list-svg' },
                 { id: 'it3', name: 'Заказы', svgLink: '#order-list-svg' },
+                { id: 'it4', name: 'Пункты выдачи', svgLink: '#location-svg' },
+                { id: 'it5', name: 'Категории', svgLink: '#category-svg' },
+                { id: 'it6', name: 'Тарифы', svgLink: '#rate-svg' },
             ]
         }
     },
 
     methods: {
+        ...mapState(['activePage']),
+
         menuItemClick(item) {
             this.$emit('menuClick', Number(item));
             this.activeItem = Number(item);

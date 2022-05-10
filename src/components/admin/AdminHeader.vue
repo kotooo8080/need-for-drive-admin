@@ -31,10 +31,14 @@
             </div>
             <v-icon 
                 class="admin-header__arrow-svg"
+                :class="{ 'admin-header__arrow-svg--rotate': adminInfoOpen }"
                 :icon-path="iconsPaths[2]"
             />
 
-            <div v-if="adminInfoOpen" class="admin-header__admin-info-open">
+            <div 
+                v-if="adminInfoOpen" 
+                class="admin-header__admin-info-open"
+            >
                 <a href="#" class="admin-header__admin-profile">Профиль администратора</a>
                 <button class="admin-header__logout-button" @click="logoutClick">Выйти</button>
             </div>
@@ -229,6 +233,15 @@ export default {
             width: 8.5px;
             height: 4.5px;
             margin-right: 29.5px;
+
+            &--rotate {
+                animation: rotate 1s forwards;
+
+                @keyframes rotate {
+                    0% {transform: rotate(0)}
+                    100% {transform: rotate(181deg)}
+                }
+            }
 
             @media ( max-width: 767px ) {
                 margin-right: 10px;

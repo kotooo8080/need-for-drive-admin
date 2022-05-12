@@ -55,8 +55,9 @@ export default {
 
     methods: {
         menuItemClick(item) {
-            this.$emit('menuClick', Number(item));
-            this.activeItem = Number(item);
+            const itemNumber = Number(item);
+            this.$emit('menuClick', itemNumber);
+            this.activeItem = itemNumber;
         }
     }
 }

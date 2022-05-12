@@ -31,7 +31,10 @@
                                 src="../../assets/img/change.svg" 
                                 alt=""
                             >
-                            <button class="category-list__block-button">Изменить</button>
+                            <button 
+                                class="category-list__block-button"
+                                @click="changeListItem(category)"
+                            >Изменить</button>
                         </div>
                         <div class="
                             category-list__button-block 
@@ -42,7 +45,10 @@
                                 src="../../assets/img/cancel.svg" 
                                 alt=""
                             >
-                            <button class="category-list__block-button">Удалить</button>
+                            <button 
+                                class="category-list__block-button"
+                                @click="deleteListItem(category.id)"
+                            >Удалить</button>
                         </div>
                     </td>
                 </tr>
@@ -52,7 +58,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 export default {
     name: 'CategoryList',
 
@@ -64,10 +70,24 @@ export default {
 
     methods: {
         ...mapState(['categories']),
+        ...mapActions(['deleteServerData', 'getServerData']),
+
+        reloadList() {
+            this.getServerData({ name: '/db/category/', arrName: 'categories' });
+        },
 
         itemClicked (clickedRow) {
             this.clickedCar = clickedRow.index;
-        }
+        },
+
+        changeListItem(category) {
+            this.$emit('changeCategory', category.id);
+        },
+
+        deleteListItem(itemId) {
+            this.deleteServerData(`/db/category/${itemId}`);
+            this.reloadList();
+        },
     }
 }
 </script>

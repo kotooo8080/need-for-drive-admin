@@ -27,7 +27,7 @@ export default {
 
         async getDataHandler () {
             const servPath = 'db/point';
-            await this.getServerData({ name: servPath, indx: 0 });
+            await this.getServerData({ name: servPath, arrName: 'points' });
         },
     },
 }

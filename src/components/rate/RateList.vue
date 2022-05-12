@@ -17,8 +17,10 @@
                     :key="indx" 
                     @click="itemClicked(rate)"
                 >
-                    <td class="rate-list__table-cell">{{ rate.rateTypeId.name }}</td>
-                    <td class="rate-list__table-cell">{{ rate.rateTypeId.unit }}</td>
+                    <td v-if="rate.rateTypeId" 
+                        class="rate-list__table-cell">{{ rate.rateTypeId.name }}</td>
+                    <td v-if="rate.rateTypeId" 
+                        class="rate-list__table-cell">{{ rate.rateTypeId.unit }}</td>
                     <td class="rate-list__table-cell">{{ rate.price }}</td>
                     <td class="rate-list__table-cell rate-list__table-cell--buttons">
                         <div class="rate-list__button-block rate-list__button-block--change">
@@ -27,7 +29,10 @@
                                 src="../../assets/img/change.svg" 
                                 alt=""
                             >
-                            <button class="rate-list__block-button">Изменить</button>
+                            <button 
+                                class="rate-list__block-button"
+                                @click="changeListItem(rate)"
+                            >Изменить</button>
                         </div>
                         <div class="rate-list__button-block rate-list__button-block--cancel">
                             <img 
@@ -35,7 +40,10 @@
                                 src="../../assets/img/cancel.svg" 
                                 alt=""
                             >
-                            <button class="rate-list__block-button">Удалить</button>
+                            <button 
+                                class="rate-list__block-button"
+                                @click="deleteListItem(rate.id)"
+                            >Удалить</button>
                         </div>
                     </td>
                 </tr>
@@ -45,7 +53,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapState, mapMutations } from 'vuex';
+
 export default {
     name: 'RateList',
 
@@ -58,9 +67,24 @@ export default {
 
     methods: {
         ...mapState(['rates', 'activePage']),
+        ...mapActions(['changeServerData', 'deleteServerData', 'getServerData']),
+        ...mapMutations(['blurSet']),
 
         itemClicked (clickedRow) {
             this.clickedCar = clickedRow.index;
+        },
+
+        changeListItem(rate) {
+            this.$emit('changeRate', rate.id);
+        },
+
+        deleteListItem(itemId) {
+            this.deleteServerData(`/db/rate/${itemId}`);
+            this.reloadList();
+        },
+
+        reloadList() {
+            this.getServerData({ name: '/db/rate/', arrName: 'rates' });
         }
     }
 }

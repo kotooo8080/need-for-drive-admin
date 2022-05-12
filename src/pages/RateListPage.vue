@@ -27,7 +27,7 @@ export default {
 
         async getDataHandler () {
             const servPath = 'db/rate';
-            await this.getServerData({ name: servPath, indx: 2 });
+            await this.getServerData({ name: servPath, arrName: 'rates' });
         },
     },
 }

@@ -53,7 +53,6 @@ export default {
 
         menuItemClick(item) {
             this.$emit('menuClick', Number(item));
-            this.activeItem = Number(item);
             this.menuSwitcher = false;
         }
     }

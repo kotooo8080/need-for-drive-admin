@@ -7,6 +7,7 @@
                     <th scope="col">Модель</th>
                     <th scope="col">Цвета</th>
                     <th scope="col">Цена</th>
+                    <th class="car-surface-list__empty" scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -21,9 +22,42 @@
                         <h4 
                             v-for="color in car.colors"
                             :key="color"
-                        >{{ color }},</h4>
+                        >{{ color }}</h4>
                     </td>
                     <td>{{ car.priceMin }} - {{ car.priceMax }}</td>
+                    <td class="
+                        car-surface-list__table-cell 
+                        car-surface-list__table-cell--buttons"
+                    >
+                        <div class="
+                            car-surface-list__button-block 
+                            car-surface-list__button-block--change"
+                        >
+                            <img 
+                                class="car-surface-list__block-img" 
+                                src="../../../assets/img/change.svg" 
+                                alt=""
+                            >
+                            <button 
+                                class="car-surface-list__block-button"
+                                @click="changeListItem(car)"
+                            >Изменить</button>
+                        </div>
+                        <div class="
+                            car-surface-list__button-block 
+                            car-surface-list__button-block--cancel"
+                        >
+                            <img 
+                                class="car-surface-list__block-img" 
+                                src="../../../assets/img/cancel.svg" 
+                                alt=""
+                            >
+                            <button 
+                                class="car-surface-list__block-button"
+                                @click="deleteListItem(car.id)"
+                            >Удалить</button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -101,12 +135,94 @@ export default {
 
         &__cell-colors {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+
+            justify-content: flex-start;
+            justify-items: start;
+            align-content: flex-start;
 
             flex-wrap: wrap;
-            width: fit-content;
+            max-height: 100px;
 
             padding: 0 20px;
+
+            h4 {
+                margin: 5px 10px;
+                text-align: left;
+            }
+        }
+
+         &__table-cell {
+            padding: 0 20px;
+
+            &--buttons {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: center;
+
+                width: 156px;
+                height: 36.5px;
+                text-align: right;
+            }
+        }
+
+        &__empty {
+            width: 156px;
+        }
+
+        &__button-block {
+            display: flex;
+            flex-direction: row;
+
+            height: 20px;
+            width: 71px;
+
+            align-items: center;
+            justify-content: flex-start;
+
+            border: 0.5px solid $white-gray;
+            border-radius: 4px;
+
+            &--cancel {
+                img {
+                    width: 6.6px;
+                    height: 7px;
+
+                    margin-right: 4.8px;
+                }
+            }
+
+            &--change {
+                margin-right: 10px;
+                img {
+                    width: 4px;
+                    height: 8px;
+
+                    margin-left: 6px;
+                    margin-right: 4px;
+                }
+            }
+        }
+
+        &__block-button {
+            border: none;
+            background: none;
+
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 13px;
+            text-align: center;
+
+            padding: 0;
+            color: $gray;
+        }
+
+        &__block-img {
+            margin: 0;
+            margin-left: 8px;
         }
     }
 </style>

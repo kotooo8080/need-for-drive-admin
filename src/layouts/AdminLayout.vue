@@ -1,5 +1,8 @@
 <template>
-    <main class="admin-layout">
+    <main 
+        class="admin-layout"
+    >
+        <div v-if="blurVal()" class="admin-layout__blur"></div>
         <admin-menu class="admin-layout__menu" @menuClick="pathChange"/>
         <div class="admin-layout__main">
             <admin-header class="admin-layout__header" />
@@ -18,7 +21,7 @@ import AdminHeader from '@/components/admin/AdminHeader'
 import AdminFooter from '@/components/admin/AdminFooter'
 import ContentDescription from '@/components/ContentDescription.vue'
 
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
     name: 'AdminLayout',
@@ -44,20 +47,26 @@ export default {
         }
     },
 
-    created() {
+    async created() {
+        await this.getCities();
         if(this.activePage) {
             this.contentIndex = this.activePage();
         }
     },
 
     methods: {
-        ...mapState(['activePage']),
+        ...mapState(['activePage', 'blurVal']),
+        ...mapActions(['getServerData']),
 
         pathChange(componentIndx) {
             this.contentIndex = componentIndx;
             this.$router.push('/admin' + this.contentPaths[componentIndx]);
+        },
+
+        async getCities() {
+            await this.getServerData({ name: '/db/city', arrName: 'cities' });
         }
-    }
+    },
 }
 </script>
 
@@ -77,6 +86,20 @@ export default {
 
         @media ( max-width: 320px ) {
             height: 160%;
+        }
+
+        &__blur {
+            opacity: 0.8;
+        
+            background-color: $main-white;
+            border-color: $main-white;
+
+            position: absolute;
+
+            width: 100%;
+            height: 1000px;
+
+            z-index: 3;
         }
         
         &__main {

@@ -47,7 +47,7 @@ export default {
 
     data() {
         return {
-            activeItem: this.activePage(),
+            activeItem: 0,
             menuItems: [
                 { id: 'it1', name: 'Карточка автомобиля', svgLink: '#edit-card-svg' },
                 { id: 'it2', name: 'Список авто', svgLink: '#auto-list-svg' },
@@ -57,6 +57,10 @@ export default {
                 { id: 'it6', name: 'Тарифы', svgLink: '#rate-svg' },
             ]
         }
+    },
+
+    mounted() {
+        this.activeItem = this.activePage();
     },
 
     methods: {

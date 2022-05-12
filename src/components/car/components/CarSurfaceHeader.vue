@@ -6,8 +6,8 @@
                 car-surface-header__button 
                 car-surface-header__button--red
             "
-            >Перезагрузить</button>
-            <button class="car-surface-header__button">Применить</button>
+            >Обновить</button>
+            <button class="car-surface-header__button">Сохранить</button>
         </div>
     </div>
 </template>

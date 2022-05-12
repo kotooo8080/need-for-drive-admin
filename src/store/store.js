@@ -9,11 +9,15 @@ const store = createStore({
         refreshToken: localStorage.getItem('refresh-token') || '',
 
         activePage: 0,
+        blurVal: false,
+        answer: {},
+
         points: [],
         categories: [],
         rates: [],
         cars: [],
-        orders: []
+        orders: [],
+        cities: [],
     },
 
     mutations: {
@@ -35,28 +39,20 @@ const store = createStore({
             state.refreshToken = ''
         },
 
-        pointsSet ( state, data ) {
-            state.points = data;
-        },
-
-        categoriesSet ( state, data ) {
-            state.categories = data;
-        },
-
-        ratesSet ( state, data ) {
-            state.rates = data;
-        },
-
-        carsSet ( state, data ) {
-            state.cars = data;
-        },
-
-        ordersSet ( state, data ) {
-            state.orders = data;
+        dataSet ( state, [ arrName, data ] ) {
+            state[arrName] = data;
         },
 
         changeActivePage ( state, pageIndx ) {
             state.activePage = pageIndx;
+        },
+
+        blurSet ( state, blurValue ) {
+            state.blurVal = blurValue;
+        },
+
+        setDataAnswer( state, data ) {
+            state.answer = data;
         }
     },
 
@@ -79,29 +75,26 @@ const store = createStore({
         async getServerData({ commit }, serviceData) {
             try {
                 const serverData = await api.getServerData(serviceData.name);
+                commit('dataSet', [ serviceData.arrName, serverData.data.data ]);
+            } catch (err) {}
+        },
 
-                switch (serviceData.indx) {
-                    case 0: {
-                        commit('pointsSet', serverData.data.data);
-                        break;
-                    }
-                    case 1: {
-                        commit('categoriesSet', serverData.data.data);
-                        break;
-                    }
-                    case 2: {
-                        commit('ratesSet', serverData.data.data);
-                        break;
-                    }
-                    case 3: {
-                        commit('carsSet', serverData.data.data);
-                        break;
-                    }
-                    case 4: {
-                        commit('ordersSet', serverData.data.data);
-                        break;
-                    }
-                }
+        async setServerData({ commit }, serviceData ) {
+            try {
+                const serverData = await api.setServerData( serviceData.name, serviceData.data );
+                commit('setDataAnswer', serverData.data);
+            } catch (err) {}
+        },
+
+        async changeServerData({ commit }, serviceData ) {
+            try {
+                await api.changeServerData( serviceData.name, serviceData.data );
+            } catch (err) {}
+        },
+
+        async deleteServerData({ commit }, serviceData ) {
+            try {
+                await api.deleteServerData( serviceData );
             } catch (err) {}
         }
     },

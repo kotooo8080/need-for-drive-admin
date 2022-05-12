@@ -1,7 +1,7 @@
 <template>
     <div class="category-surface">
-        <category-header/>
-        <category-list/>
+        <category-header :changeCategory="changeCategoryId"/>
+        <category-list @changeCategory="changeClick"/>
         <category-footer/>
     </div>
 </template>
@@ -19,6 +19,18 @@ export default {
         CategoryList,
         CategoryHeader, 
     },
+
+    data() {
+        return {
+            changeCategoryId: ''
+        }
+    },
+
+    methods: {
+        changeClick (data) {
+            this.changeCategoryId = data;
+        }
+    }
 }
 </script>
 

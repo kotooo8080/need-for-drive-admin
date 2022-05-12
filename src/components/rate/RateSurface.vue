@@ -1,7 +1,7 @@
 <template>
     <div class="rate-surface">
-        <rate-header/>
-        <rate-list/>
+        <rate-header :changeRate="changeRateId"/>
+        <rate-list @changeRate="changeClick"/>
         <rate-footer/>
     </div>
 </template>
@@ -19,6 +19,18 @@ export default {
         RateList,
         RateHeader, 
     },
+
+    data() {
+        return {
+            changeRateId: ''
+        }
+    },
+
+    methods: {
+        changeClick (data) {
+            this.changeRateId = data;
+        }
+    }
 }
 </script>
 

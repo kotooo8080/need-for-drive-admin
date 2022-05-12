@@ -18,24 +18,40 @@
                     @click="itemClicked(point)"
                 >
                     <td class="point-list__table-cell">{{ point.name }}</td>
-                    <td class="point-list__table-cell">{{ point.cityId.name }}</td>
+                    <td v-if="point.cityId" class="point-list__table-cell">
+                        {{ point.cityId.name }}</td>
                     <td class="point-list__table-cell">{{ point.address }}</td>
-                    <td class="point-list__table-cell point-list__table-cell--buttons">
-                        <div class="point-list__button-block point-list__button-block--change">
+                    <td class="
+                        point-list__table-cell 
+                        point-list__table-cell--buttons"
+                    >
+                        <div class="
+                            point-list__button-block 
+                            point-list__button-block--change"
+                        >
                             <img 
                                 class="point-list__block-img" 
                                 src="../../assets/img/change.svg" 
                                 alt=""
                             >
-                            <button class="point-list__block-button">Изменить</button>
+                            <button 
+                                class="point-list__block-button"
+                                @click="changeListItem(point)"
+                            >Изменить</button>
                         </div>
-                        <div class="point-list__button-block point-list__button-block--cancel">
+                        <div class="
+                            point-list__button-block 
+                            point-list__button-block--cancel"
+                        >
                             <img 
                                 class="point-list__block-img" 
                                 src="../../assets/img/cancel.svg" 
                                 alt=""
                             >
-                            <button class="point-list__block-button">Удалить</button>
+                            <button 
+                                class="point-list__block-button"
+                                @click="deleteListItem(point.id)"
+                            >Удалить</button>
                         </div>
                     </td>
                 </tr>
@@ -45,22 +61,41 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapState, mapMutations } from 'vuex';
+
 export default {
     name: 'PointList',
 
     data() {
         return {
             clickedCar: 0,
-            pointsData: []
+            
+            pointName: '',
+            pointCity: '',
+            pointAddress: '',
         }
     },
 
     methods: {
         ...mapState(['points', 'activePage']),
+        ...mapActions(['changeServerData', 'deleteServerData', 'getServerData']),
+        ...mapMutations(['blurSet']),
 
         itemClicked (clickedRow) {
             this.clickedCar = clickedRow.index;
+        },
+
+        changeListItem(point) {
+            this.$emit('changePoint', point.id);
+        },
+
+        deleteListItem(itemId) {
+            this.deleteServerData(`/db/point/${itemId}`);
+            this.reloadList();
+        },
+
+        reloadList() {
+            this.getServerData({ name: '/db/point/', arrName: 'points' });
         }
     }
 }

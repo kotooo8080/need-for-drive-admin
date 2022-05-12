@@ -27,7 +27,7 @@ export default {
 
         async getDataHandler () {
             const servPath = 'db/category';
-            await this.getServerData({ name: servPath, indx: 1 });
+            await this.getServerData({ name: servPath, arrName: 'categories' });
         },
     },
 }

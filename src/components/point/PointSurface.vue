@@ -1,7 +1,7 @@
 <template>
     <div class="point-surface">
-        <point-header/>
-        <point-list/>
+        <point-header :changePoint="changePointId"/>
+        <point-list @changePoint="changeClick"/>
         <point-footer/>
     </div>
 </template>
@@ -19,6 +19,18 @@ export default {
         PointList,
         PointHeader, 
     },
+
+    data() {
+        return {
+            changePointId: ''
+        }
+    },
+
+    methods: {
+        changeClick (data) {
+            this.changePointId = data;
+        }
+    }
 }
 </script>
 

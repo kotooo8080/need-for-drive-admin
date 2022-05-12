@@ -1,7 +1,7 @@
 <template>
     <div class="car-surface">
-        <car-surface-header />
-        <car-surface-list/>
+        <car-surface-header :changeCar="changeCarId"/>
+        <car-surface-list @changeCar="changeClick"/>
         <car-surface-footer/>
     </div>
 </template>
@@ -19,6 +19,18 @@ export default {
         CarSurfaceFooter,
         CarSurfaceList
     },
+
+    data() {
+        return {
+            changeCarId: ''
+        }
+    },
+
+    methods: {
+        changeClick (data) {
+            this.changeCarId = data;
+        }
+    }
 }
 </script>
 

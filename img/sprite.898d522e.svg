@@ -17,7 +17,28 @@
     <symbol id="auto-list-svg" width="13" height="10" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 0.5V1.85714H5.83333V0.5H0.5ZM5.83333 4.57142H0.5V3.21428H5.83333V4.57142ZM0.5 7.28572H5.83333V5.92857H0.5V7.28572ZM0.5 10H5.83333V8.64285H0.5V10ZM12.5 0.5H7.16663V10H12.5V0.5Z"/>
     </symbol>
-    <svg id="order-list-svg" width="9" height="10" viewBox="0 0 9 10" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="order-list-svg" width="9" height="10" viewBox="0 0 9 10" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 0H1.5C0.95 0 0.505 0.45 0.505 1L0.5 9C0.5 9.55 0.945 10 1.495 10H7.5C8.05 10 8.5 9.55 8.5 9V3L5.5 0ZM6.5 7H5V8.5H4V7H2.5V6H4V4.5H5V6H6.5V7ZM5 0.75V3.5H7.75L5 0.75Z"/>
-    </svg>
+    </symbol>
+    <symbol id="location-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+        <path d="M12.5,0A9.24,9.24,0,0,0,3,9.41c0,7.88,8.8,15.17,9.17,15.47a.5.5,0,0,0,.65,0C13.21,24.53,22,16.51,22,9.41A9.24,9.24,0,0,0,12.5,0Zm0,14A4.5,4.5,0,1,1,17,9.5,4.5,4.5,0,0,1,12.5,14Z"/>
+    </symbol>
+    <symbol id="category-svg" viewBox="-265 388.9 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g><path d="M-214.9,426.7h-36.2c-0.9,0-1.6-0.6-1.6-1.4v-8.6c0-0.8,0.7-1.4,1.6-1.4h36.2c0.9,0,1.6,0.6,1.6,1.4v8.6   C-213.3,426-214,426.7-214.9,426.7z"/>
+        <path d="M-214.9,409.4h-36.2c-0.9,0-1.6-0.6-1.6-1.4v-8.6c0-0.9,0.7-1.5,1.6-1.5h36.2c0.9,0,1.6,0.6,1.6,1.4v8.6   C-213.3,408.8-214,409.4-214.9,409.4z"/>
+        <path d="M-214.9,443.9h-36.2c-0.9,0-1.6-0.6-1.6-1.4v-8.6c0-0.8,0.7-1.4,1.6-1.4h36.2c0.9,0,1.6,0.6,1.6,1.4v8.6   C-213.3,443.3-214,443.9-214.9,443.9z"/></g>
+    </symbol>
+    <symbol id="rate-svg" width="16" height="13" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <g><circle cx="11" cy="11" r="2"/>
+        <path d="M27.24,16,16.13,4.88A3,3,0,0,0,14,4H7A3,3,0,0,0,4,7v7a3,3,0,0,0,.88,2.12L16,27.24a3,3,0,0,0,4.24,0l7-7A3,3,0,0,0,27.24,16ZM11,15a4,4,0,1,1,4-4A4,4,0,0,1,11,15Z"/>
+        </g>
+    </symbol>
+    <symbol id="plus-svg" width="12" height="12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 60.364 60.364" style="enable-background:new 0 0 60.364 60.364;" xml:space="preserve">
+        <g>
+            <path d="M54.454,23.18l-18.609-0.002L35.844,5.91C35.845,2.646,33.198,0,29.934,0c-3.263,0-5.909,2.646-5.909,5.91v17.269
+                L5.91,23.178C2.646,23.179,0,25.825,0,29.088c0.002,3.264,2.646,5.909,5.91,5.909h18.115v19.457c0,3.267,2.646,5.91,5.91,5.91
+                c3.264,0,5.909-2.646,5.91-5.908V34.997h18.611c3.262,0,5.908-2.645,5.908-5.907C60.367,25.824,57.718,23.178,54.454,23.18z"/>
+        </g>
+    </symbol>
 </svg>

@@ -2,15 +2,58 @@
     <div class="car-setting-surface-edit">
         <h3 class="car-setting-surface-edit__name">Настройки автомобиля</h3>
         <div class="car-setting-surface-edit__inputs">
-            <car-setting-surface-input 
-                v-for="item in inputs"
-                :key="item.id"
-                :description="item.name"
-                :inputData="item.data"
-                :inputWidth="item.maxWidth"
-            />
-            <div class="car-setting-surface-edit__plus-block">
-                <a href="#" class="car-setting-surface-edit__plus"/>
+            <div 
+                class="car-setting-surface-input"
+            >
+                <h5 
+                    class="car-setting-surface-input__description"
+                >Модель автомобиля
+                </h5>
+                <input 
+                    class="car-setting-surface-input__field" 
+                    type="text" 
+                    v-model="this.carData.name"
+                >
+            </div>
+            <div 
+                class="car-setting-surface-input"
+            >
+                <h5 
+                    class="car-setting-surface-input__description"
+                >Тип автомобиля
+                </h5>
+                <input 
+                    class="car-setting-surface-input__field" 
+                    type="text" 
+                    v-model="this.carData.categoryId.name"
+                >
+            </div>
+            <div 
+                class="
+                    car-setting-surface-input 
+                    car-setting-surface-input--min"
+            >
+                <h5 
+                    class="
+                        car-setting-surface-input__description 
+                        car-setting-surface-input__description--min
+                    "
+                >Доступные цвета
+                </h5>
+                <input 
+                    class="
+                        car-setting-surface-input__field 
+                        car-setting-surface-input__field--min
+                    " 
+                    type="text" 
+                    v-model="this.addedColor"
+                >
+            </div>
+            <div 
+                class="car-setting-surface-edit__plus-block"
+                @click="addColor()"
+            >
+                <h5 class="car-setting-surface-edit__plus"/>
             </div>
         </div>
         <div class="car-setting-surface-edit__colors">
@@ -42,7 +85,10 @@
         </div>
         <div class="car-setting-surface-edit__button-block">
             <div class="car-setting-surface-edit__first-buttons">
-                <button class="car-setting-surface-edit__button">Сохранить</button>
+                <button 
+                    class="car-setting-surface-edit__button"
+                    @click="addCar()"
+                >Сохранить</button>
                 <button 
                     class="
                         car-setting-surface-edit__button 
@@ -61,36 +107,64 @@
 </template>
 
 <script>
-import CarSettingSurfaceInput from './CarSettingSurfaceInput.vue'
+import { mapActions, mapMutations, mapState } from 'vuex';
 
 export default {
     name: 'CarSettingSurfaceEdit',
 
-    components: { 
-        CarSettingSurfaceInput 
-    },
-
     data() {
         return {
-            checkedColors: [],
-            inputs: [
-                { id: 'inp1', name: 'Модель автомобиля', data: 'Hyndai, i30 N', maxWidth: true },
-                { id: 'inp2', name: 'Тип автомобиля', data: 'Компакт-кар', maxWidth: true },
-                { id: 'inp3', name: 'Доступные цвета', data: 'Синий', maxWidth: false },
-            ],
+            checkedColors: this.carToChange().colors,
+            addedColor: 'Синий',
+            colors: this.carToChange().colors,
 
-            colors: [
-                'Красный',
-                'Белый',
-                'Чёрный'
-            ]
+            carData: this.carToChange(),
         }
     },
 
     methods: {
+        ...mapState(['carToChange']),
+        ...mapMutations(['dataSet']),
+        ...mapActions(['changeServerData', 'setServerData']),
+
         colorCheck(colorName) {
             return (this.checkedColors.indexOf(colorName) + 1);
         },
+
+        addColor() {
+            this.carData.colors.push(this.addedColor);
+        },
+
+        addCar() {
+            let path = '/db/car/', functionName = 'setServerData';
+
+            if(this.carData.id) {
+                path += this.carData.id;
+                functionName = 'changeServerData';
+            }
+            if(this.carData.id) {
+                this[functionName]({ name: path,
+                data: {
+                    "priceMax": this.carData.priceMax,
+                    "priceMin": this.carData.priceMin,
+                    "name": this.carData.name,
+                    "thumbnail": this.carData.thumbnail,
+                    "description": this.carData.description,
+                    "categoryId": this.carData.categoryId,
+                    "colors": this.carData.colors
+                }});
+            }
+        }
+    },
+
+    watch: {
+        carData() {
+            this.dataSet([ 'carToChange', this.carData ]);
+        },
+
+        checkedColors() {
+            this.carData.colors = this.checkedColors;
+        }
     }
 }
 </script>
@@ -164,6 +238,8 @@ export default {
             position: absolute;
             right: 0px;
             top: 8px;
+
+            margin: 0;
             width: 14px;
             height: 14px;
             opacity: 0.3;
@@ -260,6 +336,51 @@ export default {
 
             &--red {
                 background: $main-red;
+            }
+        }
+    }
+
+    .car-setting-surface-input {
+        width: calc(50% - 10.5px);
+
+        &--min {
+            width: calc(50% - 40.5px);
+        }
+
+        &__description {
+            width: 100%;
+            margin: 0;
+            margin-bottom: 4.5px;
+
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 10.5px;
+            line-height: 12px;
+
+            &--min {
+                margin-top: 31px;
+            }
+        }
+
+        &__field {
+            width: calc(100% - 22px);
+            height: 28px;
+            padding-left: 11px;
+            padding-right: 11px;
+
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 13px;
+
+            color: $main-black;
+            border: 1px solid $white-gray;
+            border-radius: 4px;
+
+            &--min {
+                width: calc(100% - 30px);
             }
         }
     }

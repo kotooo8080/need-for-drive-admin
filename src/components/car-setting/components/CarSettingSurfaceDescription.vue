@@ -3,14 +3,14 @@
         <div class="car-setting-surface-description__main-info">
             <img 
                 class="car-setting-surface-description__car-img" 
-                src='../../../assets/img/car1.png' alt=""
+                :src="carToChange().thumbnail.path" alt=""
             >
             <h3 
                 class="car-setting-surface-description__car-model"
-            >Hyndai, i30 N</h3>
+            >{{ carToChange().name }}</h3>
             <h5 
                 class="car-setting-surface-description__car-type"
-            >Компакт-кар
+            >{{ carToChange().categoryId.name }}
             </h5>
             <div class="car-setting-surface-description__input-field">
                 <div 
@@ -34,40 +34,52 @@
             </div>
             <div class="car-setting-surface-description__progress">
                 <span 
-                class="car-setting-surface-description__progress-bar" 
-                style="width: 74%"
+                    class="car-setting-surface-description__progress-bar" 
+                    style="width: 74%"
                 >
                 </span>
             </div>
         </div>
         <div class="car-setting-surface-description__other-info">
             <h4 class="car-setting-surface-description__other-description">Описание</h4>
-            <h4 
-                class="car-setting-surface-description__other-text"
-            >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Odio eaque, quidem, commodi soluta qui quae quod dolorum sint alias, 
-                possimus illum assumenda eligendi cumque?
-            </h4>
+            <textarea 
+                v-model="carData.description" 
+                class="car-setting-surface-description__description-text" type="text" />
         </div>
     </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
+
 export default {
     name: 'CarSettingSurfaceDescription',
 
     data() {
         return {
-            uploadedCarImg: {}
+            uploadedCarImg: {},
+            carData: {}
         }
     },
 
+    mounted() {
+        this.carData = this.carToChange();
+    },
+
     methods: {
+        ...mapState(['carToChange']),
+        ...mapMutations(['dataSet']),
+
         handleFileUpload() {
             this.uploadedcarImg = this.$refs.carImg.files[0];
         }
     },
+
+    watch: {
+        carData() {
+            this.dataSet([ 'carToChange', this.carData ]);
+        }
+    }
 }
 </script>
 
@@ -286,7 +298,15 @@ export default {
             color: $darken-gray;
         }
 
-        &__other-text {
+        &__description-text {
+            border: 0.5px solid $white-gray;
+            border-radius: 4px;
+
+            width: 100%;
+            height: 100px;
+
+            resize: none;
+
             margin-top: 0;
             margin-bottom: 10px;
 

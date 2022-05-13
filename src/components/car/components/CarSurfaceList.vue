@@ -5,7 +5,7 @@
             <thead class="car-surface-list__table-header">
                 <tr>
                     <th scope="col">Модель</th>
-                    <th scope="col">Цвета</th>
+                    <th class="car-surface-list__colors-column" scope="col">Цвета</th>
                     <th scope="col">Цена</th>
                     <th class="car-surface-list__empty" scope="col"></th>
                 </tr>
@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapMutations, mapState } from 'vuex';
 export default {
     name: 'CarSurfaceList',
 
@@ -77,10 +77,26 @@ export default {
 
     methods: {
         ...mapState(['cars']),
+        ...mapMutations(['dataSet']),
+        ...mapActions(['getServerData', 'deleteServerData']),
 
         itemClicked (clickedRow) {
             this.clickedCar = clickedRow.index;
-        }
+        },
+
+        reloadList() {
+            this.getServerData({ name: '/db/car', arrName: 'cars' });
+        },
+
+        async deleteListItem(itemId) {
+            await this.deleteServerData(`/db/car/${itemId}`);
+            this.reloadList();
+        },
+
+        changeListItem(car) {
+            this.dataSet([ 'carToChange', car ]);
+            this.$router.push({ name: 'CarSettingPage' });
+        },
     }
 }
 </script>
@@ -133,16 +149,20 @@ export default {
             background: $content-background-white;
         }
 
+        &__colors-column {
+            width: 30%;
+        }
+
         &__cell-colors {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
 
             justify-content: flex-start;
             justify-items: start;
             align-content: flex-start;
 
+            width: 100%;
             flex-wrap: wrap;
-            max-height: 100px;
 
             padding: 0 20px;
 

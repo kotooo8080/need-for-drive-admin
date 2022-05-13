@@ -11,6 +11,19 @@ const store = createStore({
         activePage: 0,
         blurVal: false,
         answer: {},
+        carToChange: { 
+            name: 'Hyndai, i30 N',
+            categoryId: {
+                name: 'Компакт-кар'
+            },
+            colors: ['Красный','Белый','Чёрный'],
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing" +
+            " elit. Odio eaque, quidem, commodi soluta qui quae quod" +
+            " dolorum sint alias, possimus illum assumenda eligendi cumque?",
+            thumbnail: {
+                path: require('../assets/img/car1.png')
+            }
+        },
 
         points: [],
         categories: [],

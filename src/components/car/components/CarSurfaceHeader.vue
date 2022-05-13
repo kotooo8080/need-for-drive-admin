@@ -6,6 +6,7 @@
                 car-surface-header__button 
                 car-surface-header__button--red
             "
+                @click="reloadList()"
             >Обновить</button>
             <button class="car-surface-header__button">Сохранить</button>
         </div>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import CarSurfaceFilters from './CarSurfaceFilters.vue'
 
 export default {
@@ -21,6 +23,14 @@ export default {
     components: { 
         CarSurfaceFilters 
     },
+
+    methods: {
+        ...mapActions(['getServerData']),
+        
+        reloadList() {
+            this.getServerData({ name: '/db/car', arrName: 'cars' });
+        },
+    }
 }
 </script>
 

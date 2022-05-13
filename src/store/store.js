@@ -1,26 +1,54 @@
-import { createStore } from 'vuex';
+import { createStore } from 'vuex'
+import api from '../services/api/api'
 
 const store = createStore({
     state: {
-        user: null,
+        status: '',
+        err: null,
+        token: localStorage.getItem('user-token') || '',
+        refreshToken: localStorage.getItem('refresh-token') || '',
     },
 
     mutations: {
-        setUserData (state, data) {
-            state.user = data;
+        authSuccess( state, token, refreshToken ){
+            state.status = 'success';
+
+            state.token = token;
+            state.refreshToken = refreshToken;
+        },
+
+        authError( state, err ) {
+            state.status = 'error'
+            state.err = err
+        },
+
+        logout( state ) {
+            state.status = '';
+            state.token = '';
+            state.refreshToken = ''
         },
     },
 
     actions: {
-        login ({ commit }, data) {
-            window.localStorage.setItem('auth', true);
-            commit('setUserData', data);
+        async login({ commit }, data) {
+            try {
+                const { token, refreshToken } = await api.signIn(data)
+                commit('authSuccess', token, refreshToken)
+
+            } catch (err) {
+                commit('authError', err)
+            }
         },
 
-        logout ({ commit }) {
-            window.localStorage.setItem('auth', false);
-            commit('setUserData', {});
-        },
+        async logout({ commit }) {
+            await api.logOut();
+            commit('logout');
+        }
+    },
+
+    getters : {
+        authStatus: state => state.status,
+        isLoggedIn: state => !!state.token,
     }
 })
 

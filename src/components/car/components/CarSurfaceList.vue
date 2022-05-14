@@ -106,6 +106,10 @@ export default {
     @import '/src/assets/style/colors.scss';
 
     .car-surface-list {
+        @media ( max-width: 767px ) {
+            overflow-x: scroll;
+        }
+        
         &__data {
             width: calc(100% - 57px);
             background: $main-white;
@@ -185,11 +189,19 @@ export default {
                 width: 156px;
                 height: 36.5px;
                 text-align: right;
+
+                @media ( max-width: 768px ) {
+                    width: 100px;
+                }
             }
         }
 
         &__empty {
             width: 156px;
+
+            @media ( max-width: 768px ) {
+                width: 10%;
+            }
         }
 
         &__button-block {
@@ -239,6 +251,11 @@ export default {
 
             padding: 0;
             color: $gray;
+
+            @media ( max-width: 768px ) {
+                width: 30px;
+                text-indent: -9999px; 
+            }
         }
 
         &__block-img {

@@ -100,6 +100,8 @@ export default {
             justify-content: flex-end;
             width: 80%;
             height: 67.5px;
+
+            z-index: 1;
         }
 
         &__search-str {

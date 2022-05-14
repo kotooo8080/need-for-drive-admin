@@ -1,7 +1,7 @@
 <template>
     <div class="car-surface">
-        <car-surface-header :changeCar="changeCarId"/>
-        <car-surface-list @changeCar="changeClick"/>
+        <car-surface-header :change-car="changeCarId"/>
+        <car-surface-list @change-car="changeClick"/>
         <car-surface-footer/>
     </div>
 </template>

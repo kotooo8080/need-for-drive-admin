@@ -143,16 +143,18 @@ export default {
                 functionName = 'changeServerData';
             }
             if(this.carData.id) {
-                this[functionName]({ name: path,
-                data: {
-                    "priceMax": this.carData.priceMax,
-                    "priceMin": this.carData.priceMin,
-                    "name": this.carData.name,
-                    "thumbnail": this.carData.thumbnail,
-                    "description": this.carData.description,
-                    "categoryId": this.carData.categoryId,
-                    "colors": this.carData.colors
-                }});
+                this[functionName]({ 
+                    name: path,
+                    data: {
+                        "priceMax": this.carData.priceMax,
+                        "priceMin": this.carData.priceMin,
+                        "name": this.carData.name,
+                        "thumbnail": this.carData.thumbnail,
+                        "description": this.carData.description,
+                        "categoryId": this.carData.categoryId,
+                        "colors": this.carData.colors
+                    }
+                });
             }
         }
     },

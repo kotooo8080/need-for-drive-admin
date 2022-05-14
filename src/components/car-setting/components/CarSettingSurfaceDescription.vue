@@ -302,7 +302,7 @@ export default {
             border: 0.5px solid $white-gray;
             border-radius: 4px;
 
-            width: 100%;
+            width: calc(100% - 6px);
             height: 100px;
 
             resize: none;

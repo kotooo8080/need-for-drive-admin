@@ -178,6 +178,16 @@ export default {
 
         padding: 20px;
 
+        @media ( max-width: 820px ) {
+            align-items: flex-start;
+        }
+
+        @media ( max-width: 767px ) {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
         &__add {
             position: relative;
 
@@ -207,6 +217,15 @@ export default {
             color: $blue-gray;
 
             z-index: 4;
+
+            @media ( max-width: 820px ) {
+                top: 150px;
+            }
+
+            @media ( max-width: 768px ) {
+                width: calc(90% - 80px);
+                left: 5%;
+            } 
         }
 
         &__form-header {
@@ -274,6 +293,16 @@ export default {
                 margin-left: 21.5px;
                 margin-bottom: 16px;
                 margin-right: auto;
+            }
+
+            @media ( max-width: 820px ) {
+                margin-left: auto;
+                margin-right: 0;
+            }
+
+            @media ( max-width: 767px ) {
+                margin: 0;
+                margin-top: 10px;
             }
         }
 

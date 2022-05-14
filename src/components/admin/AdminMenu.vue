@@ -97,6 +97,8 @@ export default {
                 width: 100%;
                 border-bottom: none;
                 box-shadow: none;
+
+                z-index: 2;
             }
         }
 
@@ -192,11 +194,9 @@ export default {
             &--mobile-open {
                 position: absolute;
                 width: 100vw;
-                height: 189px;
                 top: 69px;
 
                 display: flex;
-
                 background: $main-white;
             }
         }

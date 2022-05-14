@@ -12,8 +12,10 @@
             <tbody>
                 <tr 
                     class="category-list__table-row"
-                    v-for="(category, indx) in categories()" 
-                    :key="indx" 
+                    v-for="(category, indx) in 
+                        categories().filter((el, i) => 
+                        (i >= 8 * startIndx() && i < (8 * startIndx() + 8)))" 
+                    :key="'category' + indx" 
                     @click="itemClicked(category)"
                 >
                     <td class="category-list__table-cell">{{ category.name }}</td>
@@ -58,7 +60,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
 export default {
     name: 'CategoryList',
 
@@ -69,8 +71,9 @@ export default {
     },
 
     methods: {
-        ...mapState(['categories']),
+        ...mapState(['categories', 'startIndx']),
         ...mapActions(['deleteServerData', 'getServerData']),
+        ...mapMutations(['dataSet']),
 
         reloadList() {
             this.getServerData({ name: '/db/category/', arrName: 'categories' });
@@ -96,6 +99,10 @@ export default {
     @import '/src/assets/style/colors.scss';
 
     .category-list {
+        @media ( max-width: 767px ) {
+            overflow-x: scroll;
+        }
+        
         &__data {
             width: calc(100% - 57px);
             background: $main-white;
@@ -152,11 +159,19 @@ export default {
                 width: 156px;
                 height: 36.5px;
                 text-align: right;
+
+                @media ( max-width: 768px ) {
+                    width: 100px;
+                }
             }
         }
 
         &__empty {
             width: 156px;
+
+            @media ( max-width: 768px ) {
+                width: 10%;
+            }
         }
 
         &__button-block {
@@ -206,6 +221,11 @@ export default {
 
             padding: 0;
             color: $gray;
+
+            @media ( max-width: 768px ) {
+                width: 30px;
+                text-indent: -9999px; 
+            }
         }
 
         &__block-img {

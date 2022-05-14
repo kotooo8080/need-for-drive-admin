@@ -8,7 +8,7 @@
             :class="{ 
                 'admin-menu-items__item--mobile-open': menuSwitcher, 
                 'admin-menu-items__item--active': activeItem == indx, 
-                'admin-menu-items__item--first-item': indx === 0, 
+                'admin-menu-items__item--big-item': indx === 0 || indx === 3, 
                 'admin-menu-items__item--second-item': indx === 1 
             }"
             v-for="(item, indx) in menuItems"
@@ -92,10 +92,6 @@ export default {
         }
 
         &__item {
-            @media ( max-width: 1024px ) {
-                height: 62px;
-            }
-
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -111,6 +107,10 @@ export default {
 
             color: $blue-gray;
 
+            @media ( max-width: 1024px ) {
+                height: 62px;
+            }
+
             &--mobile-open {
                 width: 100%;
 
@@ -120,7 +120,11 @@ export default {
 
                 @keyframes show {
                     0% { opacity: 0; }
-                    100% { opacity:1; }
+                    100% { opacity: 1; }
+                }
+
+                @media ( max-width: 768px ) {
+                    z-index: 3;
                 }
             }
 
@@ -138,6 +142,38 @@ export default {
 
                 @media ( max-width: 767px ) {
                     width: calc(100% - 4px);
+                }
+            }
+
+            &--big-item {
+                @media ( max-width: 820px ) {
+                    align-items: flex-start;
+                    padding-top: 15px;
+
+                    height: 47px;
+                }
+
+                @media ( max-width: 767px ) {
+                    align-items: center;
+                    padding-top: 0;
+
+                    height: 62px;
+                }
+            }
+
+            &--second-item {
+                @media ( max-width: 820px ) {
+                    align-items: flex-start;
+                    padding-top: 15px;
+
+                    height: 47px;
+                }
+
+                @media ( max-width: 767px ) {
+                    align-items: center;
+                    padding-top: 0;
+
+                    height: 62px;
                 }
             }
         }
@@ -164,6 +200,14 @@ export default {
             height: 17px;
 
             margin-right: 26px;
+
+            @media ( max-width: 768px ) {
+                z-index: 4;
+            }
+        }
+
+        &__item--mobile-open {
+            height: 62px;
         }
     }
 </style>

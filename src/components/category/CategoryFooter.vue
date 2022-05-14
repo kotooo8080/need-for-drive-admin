@@ -4,10 +4,11 @@
             <button class="category-footer__scroll-button">«</button>
 
             <button 
-                v-for="(card, indx) in cardsInfo" 
-                :key="'card' + indx" 
+                v-for="(el, indx) in numbersArr" 
+                :key="'cat' + indx" 
                 class="category-footer__page-button" 
                 :class="{ 'category-footer__page-button--active': openedPage == indx}" 
+                @click="switchPage(indx)"
             >
                 {{ indx + 1 }}
             </button>
@@ -18,76 +19,34 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 export default {
     name: 'CategoryFooter',
 
     data() {
         return {
             openedPage: 0,
-            cardsInfo: [ 
-                { 
-                    photo: '../../../assets/img/car1.png', 
-                    model: 'ELANTRA', 
-                    city: 'Санкт-Петербург', 
-                    street: 'Пушкина 4а', 
-                    date: '11.04.2022 - 12.04.2022', 
-                    color: 'Голубой', 
-                    fullTank: true, 
-                    childChair: false, 
-                    rightWheel: true, 
-                    price: '12600' 
-                },
-                { 
-                    photo: '../../../assets/img/car1.png', 
-                    model: 'i30', 
-                    city: 'Уфа', 
-                    street: 'Нариманова 42', 
-                    date: '11.04.2022 - 12.04.2022', 
-                    color: 'Красный', 
-                    fullTank: false, 
-                    childChair: true, 
-                    rightWheel: false, 
-                    price: '11200' 
-                },
-                { 
-                    photo: '../../../assets/img/car1.png', 
-                    model: 'i30', 
-                    city: 'Санкт-Петербург', 
-                    street: 'Пушкина 4а', 
-                    date: '11.04.2022 - 12.04.2022',
-                    color: 'Зеленый', 
-                    fullTank: true, 
-                    childChair: true, 
-                    rightWheel: false, 
-                    price: '10500' 
-                },
-                { 
-                    photo: '../../../assets/img/car1.png', 
-                    model: 'ELANTRA', 
-                    city: 'Ульяновск', 
-                    street: 'Нариманова 42', 
-                    date: '11.04.2022 - 12.04.2022', 
-                    color: 'Синий', 
-                    fullTank: false, 
-                    childChair: false, 
-                    rightWheel: false, 
-                    price: '8080' 
-                },
-                { 
-                    photo: '../../../assets/img/car1.png', 
-                    model: 'Rio', 
-                    city: 'Санкт-Петербург', 
-                    street: 'Пушкина 4а', 
-                    date: '11.04.2022 - 12.04.2022', 
-                    color: 'Белый', 
-                    fullTank: true, 
-                    childChair: true, 
-                    rightWheel: true, 
-                    price: '3000' 
-                }
-            ],
+            numbersArr: new Array(1).fill(0),
+            numbersNum: 1
         }
-    }
+    },
+
+    mounted() {
+        if(this.categories().length) {
+            this.numbersNum = this.categories().length;
+            this.numbersArr = new Array(Math.ceil(this.numbersNum/8)).fill(0);
+        }
+    },
+
+    methods: {
+        ...mapState(['categories', 'pagesNumber']),
+        ...mapMutations(['dataSet']),
+
+        switchPage(indx) {
+            this.openedPage = indx;
+            this.dataSet([ 'startIndx', indx ]);
+        }
+    },
 }
 </script>
 

@@ -13,7 +13,8 @@
             <tbody>
                 <tr 
                     class="point-list__table-row"
-                    v-for="(point, indx) in points()" 
+                    v-for="(point, indx) in points().filter((el, i) => 
+                        (i >= 8 * startIndx() && i < (8 * startIndx() + 8)))" 
                     :key="indx" 
                     @click="itemClicked(point)"
                 >
@@ -77,7 +78,7 @@ export default {
     },
 
     methods: {
-        ...mapState(['points', 'activePage']),
+        ...mapState(['points', 'startIndx']),
         ...mapActions(['changeServerData', 'deleteServerData', 'getServerData']),
         ...mapMutations(['blurSet']),
 
@@ -105,6 +106,10 @@ export default {
     @import '/src/assets/style/colors.scss';
 
     .point-list {
+        @media ( max-width: 767px ) {
+            overflow-x: scroll;
+        }
+
         &__data {
             width: calc(100% - 57px);
             background: $main-white;
@@ -161,11 +166,19 @@ export default {
                 width: 156px;
                 height: 36.5px;
                 text-align: right;
+
+                @media ( max-width: 768px ) {
+                    width: 100px;
+                }
             }
         }
 
         &__empty {
             width: 156px;
+
+            @media ( max-width: 768px ) {
+                width: 10%;
+            }
         }
 
         &__button-block {
@@ -215,6 +228,11 @@ export default {
 
             padding: 0;
             color: $gray;
+
+            @media ( max-width: 768px ) {
+                width: 30px;
+                text-indent: -9999px; 
+            }
         }
 
         &__block-img {

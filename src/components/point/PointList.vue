@@ -13,7 +13,8 @@
             <tbody>
                 <tr 
                     class="point-list__table-row"
-                    v-for="(point, indx) in points()" 
+                    v-for="(point, indx) in points().filter((el, i) => 
+                        (i >= 8 * startIndx() && i < (8 * startIndx() + 8)))" 
                     :key="indx" 
                     @click="itemClicked(point)"
                 >
@@ -77,7 +78,7 @@ export default {
     },
 
     methods: {
-        ...mapState(['points', 'activePage']),
+        ...mapState(['points', 'startIndx']),
         ...mapActions(['changeServerData', 'deleteServerData', 'getServerData']),
         ...mapMutations(['blurSet']),
 

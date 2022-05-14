@@ -13,8 +13,9 @@
             <tbody>
                 <tr 
                     class="car-surface-list__table-row"
-                    v-for="(car, indx) in cars()" 
-                    :key="indx" 
+                    v-for="(car, indx) in cars().filter((el, i) => 
+                        (i >= 8 * startIndx() && i < (8 * startIndx() + 8)))" 
+                    :key="'car' + indx" 
                     @click="itemClicked(car)"
                 >
                     <td>{{ car.name }}</td>
@@ -76,7 +77,7 @@ export default {
     },
 
     methods: {
-        ...mapState(['cars']),
+        ...mapState(['cars', 'startIndx']),
         ...mapMutations(['dataSet']),
         ...mapActions(['getServerData', 'deleteServerData']),
 

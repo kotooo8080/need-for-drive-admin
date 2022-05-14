@@ -12,8 +12,10 @@
             <tbody>
                 <tr 
                     class="category-list__table-row"
-                    v-for="(category, indx) in categories()" 
-                    :key="indx" 
+                    v-for="(category, indx) in 
+                        categories().filter((el, i) => 
+                        (i >= 8 * startIndx() && i < (8 * startIndx() + 8)))" 
+                    :key="'category' + indx" 
                     @click="itemClicked(category)"
                 >
                     <td class="category-list__table-cell">{{ category.name }}</td>
@@ -58,7 +60,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
 export default {
     name: 'CategoryList',
 
@@ -69,8 +71,9 @@ export default {
     },
 
     methods: {
-        ...mapState(['categories']),
+        ...mapState(['categories', 'startIndx']),
         ...mapActions(['deleteServerData', 'getServerData']),
+        ...mapMutations(['dataSet']),
 
         reloadList() {
             this.getServerData({ name: '/db/category/', arrName: 'categories' });

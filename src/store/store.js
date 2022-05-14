@@ -31,6 +31,9 @@ const store = createStore({
         cars: [],
         orders: [],
         cities: [],
+
+        startIndx: 0,
+        pagesNumber: 1
     },
 
     mutations: {
@@ -115,6 +118,7 @@ const store = createStore({
     getters : {
         authStatus: state => state.status,
         isLoggedIn: state => !!state.token,
+        getPagesNumber: state => state.pagesNumber
     }
 })
 

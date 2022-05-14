@@ -13,8 +13,9 @@
             <tbody>
                 <tr 
                     class="rate-list__table-row"
-                    v-for="(rate, indx) in rates()" 
-                    :key="indx" 
+                    v-for="(rate, indx) in rates().filter((el, i) => 
+                        (i >= 8 * startIndx() && i < (8 * startIndx() + 8)))" 
+                    :key="'rate' + indx" 
                     @click="itemClicked(rate)"
                 >
                     <td v-if="rate.rateTypeId" 
@@ -66,7 +67,7 @@ export default {
     },
 
     methods: {
-        ...mapState(['rates', 'activePage']),
+        ...mapState(['rates', 'startIndx']),
         ...mapActions(['changeServerData', 'deleteServerData', 'getServerData']),
         ...mapMutations(['blurSet']),
 
